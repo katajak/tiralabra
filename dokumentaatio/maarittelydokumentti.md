@@ -16,7 +16,7 @@ Tarkoituksena on luoda RSA-salausta käyttävä ohjelma jolla voi:
 - Salata viestin
 - Purkaa salatun viestin
 
-Ohjelmalla on käyttöliittymä jolla voidaan käyttäjäystävällisesti tehdä nämä operaatiot
+Ohjelmalla on käyttöliittymä jolla voidaan käyttäjäystävällisesti tehdä nämä operaatiot.
 
 ## Käytettävät algoritmit ja tietorakenteet
 
