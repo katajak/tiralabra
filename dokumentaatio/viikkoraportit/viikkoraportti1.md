@@ -1,6 +1,6 @@
 # Viikon 1 raportti
 
-Viikolla käytetty aika: 4t
+Viikolla käytetty aika: 5t
 
 ## Mitä olen tehnyt tällä viikolla?
 
