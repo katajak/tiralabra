@@ -24,11 +24,13 @@ RSA-avainten luominen perustuu kahteen erittäin suureen alkulukuun. Projektissa
 
 ## Aikavaativuustavoitteet
 
-todo
+Miller-Rabin: O(k log³ n)
 
 ## Lähteet
 
 https://en.wikipedia.org/wiki/RSA_(cryptosystem)
+
+https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test
 
 ## Opinto-ohjelma
 
