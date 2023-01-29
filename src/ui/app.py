@@ -1,4 +1,7 @@
 class UI:
+    """Komentorivikäyttöliittymä.
+        io injektoidaan jotta käyttöliittymän testaaminen olisi mahdollista.
+    """
     def __init__(self, io):
         self.io = io
         self.run = True
