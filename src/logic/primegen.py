@@ -50,11 +50,13 @@ class AlkulukuGeneraattori:
         """
         while True:
             p = getrandbits(bittimaara//2)
+            if len(bin(p)) != bittimaara//2:
+                continue
             if self.tarkista_onko_alkuluku(p):
                 break
         while True:
             q = getrandbits(bittimaara//2)
-            if p == q:
+            if p == q or len(bin(q)) != bittimaara//2:
                 continue
             if self.tarkista_onko_alkuluku(q):
                 break
