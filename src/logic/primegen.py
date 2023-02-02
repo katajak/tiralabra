@@ -7,13 +7,13 @@ class AlkulukuGeneraattori:
     def __init__(self):
         pass
     
-    """
-        Palauttaa True jos annettu luku n on suurella todennäköisyydellä alkuluku.
-        Testi suoritetaan k kertaa.
-        Toimii jos n on suurempi kuin 3.
-        https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test
-    """
     def miller_rabin(self, n, k):
+        """Metodi, johon toteutettu Miller-Rabin testi
+            Palauttaa True jos annettu luku n on suurella todennäköisyydellä alkuluku.
+            Testi suoritetaan k kertaa.
+            Toimii jos n on suurempi kuin 3.
+            https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test
+        """
         s = n-1
         t = 0
         while s%2 == 0:
@@ -34,6 +34,10 @@ class AlkulukuGeneraattori:
         return True
 
     def tarkista_onko_alkuluku(self, luku):
+        """Metodi, joka tarkistaa, onko annettu luku alkuluku.
+            Ensin katsotaan esitarkastuksella, sitten Miller-Rabinilla.
+            Palauttaa True jos annettu luku n on alkuluku.
+        """
         if not self.esitarkistus(luku):
             return False
         if not self.miller_rabin(luku, 40):
@@ -41,6 +45,9 @@ class AlkulukuGeneraattori:
         return True
 
     def generoi_alkuluvut(self, bittimaara):
+        """Metodi, generoi oikean pituiset alkuluvut avainten luontia varten.
+            Palauttaa tuplessa kaksi erisuuruista alkulukua p ja q.
+        """
         while True:
             p = getrandbits(bittimaara//2)
             if p%2 == 0:
@@ -56,6 +63,11 @@ class AlkulukuGeneraattori:
         return p, q
 
     def esitarkistus(self, luku):
+        """Metodi, joka alustavasti tarkistaa, onko annettu luku alkuluku.
+            Toimii jakamalla annettua lukua pienillä alkuluvuilla.
+            Palauttaa True jos annettu luku ei ole jaettavissa millään pienellä
+            alkuluvulla (paitsi itsellään).
+        """
         alkuluvut = self.generoi_pienet_alkuluvut(100)
         for alkuluku in alkuluvut:
             if luku == alkuluku:
@@ -65,6 +77,9 @@ class AlkulukuGeneraattori:
         return True
 
     def generoi_pienet_alkuluvut(self, n):
+        """Metodi, joka generoi pieniä alkulukua lukuun n asti.
+            Palauttaa listan alkuluvuista n asti
+        """
         alkuluvut = []
         for luku in range(n+1):
             if luku > 1:
