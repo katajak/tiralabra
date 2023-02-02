@@ -4,8 +4,4 @@ class AvainGeneraattori:
 
     def generoi_avaimet(self, bittimaara):
         p, q = self.alkulukugeneraattori.generoi_alkuluvut(bittimaara)
-        print(f"p: {p}")
-        print(f"pituus (binääri): {len(bin(p))}")
-        print("")
-        print(f"q: {q}")
-        print(f"pituus (binääri): {len(bin(q))}")
+        n = p*q
