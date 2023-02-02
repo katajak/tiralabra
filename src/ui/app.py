@@ -2,8 +2,9 @@ class UI:
     """Komentorivikäyttöliittymä.
         io injektoidaan jotta käyttöliittymän testaaminen olisi mahdollista.
     """
-    def __init__(self, io):
+    def __init__(self, io, alkulukugeneraattori):
         self.io = io
+        self.alkulukugeneraattori = alkulukugeneraattori
         self.run = True
 
     def suorita(self):
@@ -17,7 +18,17 @@ class UI:
             syote = self.io.lue("\nValinta: ")
 
             if syote == "1":
-                pass
+                self.io.kirjoita("\nValitse bittien määrä")
+                self.io.kirjoita("1: 1024-bittä")
+                self.io.kirjoita("q: Peru")
+
+                syote = self.io.lue("\nValinta: ")
+
+                if syote == "1":
+                    syote = 1024
+                    self.alkulukugeneraattori.generoi_avaimet(syote)
+                if syote == "q":
+                    pass
 
             elif syote == "2":
                 pass
