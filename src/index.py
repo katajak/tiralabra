@@ -6,8 +6,8 @@ from logic.keygen import AvainGeneraattori
 def main():
     io = IO()
     alkulukugeneraattori = AlkulukuGeneraattori()
-    avaingeneraattori = AvainGeneraattori()
-    sovellus = UI(io, alkulukugeneraattori, avaingeneraattori)
+    avaingeneraattori = AvainGeneraattori(alkulukugeneraattori)
+    sovellus = UI(io, avaingeneraattori)
     sovellus.suorita()
 
 if __name__ == "__main__":
