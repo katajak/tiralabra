@@ -62,6 +62,8 @@ class AlkulukuGeneraattori:
     def esitarkistus(self, luku):
         alkuluvut = self.generoi_pienet_alkuluvut(100)
         for alkuluku in alkuluvut:
+            if luku == alkuluku:
+                continue
             if luku%alkuluku == 0:
                 return False
         return True
