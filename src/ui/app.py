@@ -2,9 +2,10 @@ class UI:
     """Komentorivikäyttöliittymä.
         io injektoidaan jotta käyttöliittymän testaaminen olisi mahdollista.
     """
-    def __init__(self, io, alkulukugeneraattori):
+    def __init__(self, io, alkulukugeneraattori, avaingeneraattori):
         self.io = io
         self.alkulukugeneraattori = alkulukugeneraattori
+        self.avaingeneraattori = avaingeneraattori
         self.run = True
 
     def suorita(self):

@@ -19,7 +19,7 @@ class TestUI(unittest.TestCase):
     def test_voi_poistua_ohjelmasta(self):
         io = StubIO(["q"])
 
-        sovellus = UI(io, None)
+        sovellus = UI(io, None, None)
         sovellus.suorita()
 
         self.assertEqual(sovellus.run, False)

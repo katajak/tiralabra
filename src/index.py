@@ -1,11 +1,13 @@
 from ui.readerwriter import IO
 from ui.app import UI
-from logic.prime import AlkulukuGeneraattori
+from logic.primegen import AlkulukuGeneraattori
+from logic.keygen import AvainGeneraattori
 
 def main():
     io = IO()
     alkulukugeneraattori = AlkulukuGeneraattori()
-    sovellus = UI(io, alkulukugeneraattori)
+    avaingeneraattori = AvainGeneraattori()
+    sovellus = UI(io, alkulukugeneraattori, avaingeneraattori)
     sovellus.suorita()
 
 if __name__ == "__main__":

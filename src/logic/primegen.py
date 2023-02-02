@@ -2,15 +2,17 @@ from random import randint, getrandbits
 
 
 class AlkulukuGeneraattori:
-    """Luokka, johon toteutettu Miller-Rabin testi.
+    """Luokka, jonka tehtävänä on luoda oikean pituisia alkulukuja avaimen generointia varten.
+    """
+    def __init__(self):
+        pass
+    
+    """
         Palauttaa True jos annettu luku n on suurella todennäköisyydellä alkuluku.
         Testi suoritetaan k kertaa.
         Toimii jos n on suurempi kuin 3.
         https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test
     """
-    def __init__(self):
-        pass
-
     def miller_rabin(self, n, k):
         s = n-1
         t = 0
@@ -30,12 +32,6 @@ class AlkulukuGeneraattori:
             else:
                 return False
         return True
-
-    def generoi_avaimet(self, bittimaara):
-        p, q = self.generoi_alkuluvut(bittimaara)
-        print(f"p: {p}")
-        print("")
-        print(f"q: {q}")
 
     def tarkista_onko_alkuluku(self, luku):
         if not self.esitarkistus(luku):

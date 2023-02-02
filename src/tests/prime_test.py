@@ -1,5 +1,5 @@
 import unittest
-from logic.prime import AlkulukuGeneraattori
+from logic.primegen import AlkulukuGeneraattori
 
 
 # Miller-Rabinissa käytetään 40 iteraatiota
