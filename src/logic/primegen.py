@@ -6,7 +6,7 @@ class AlkulukuGeneraattori:
     """
     def __init__(self):
         pass
-    
+
     def miller_rabin(self, n, k):
         """Metodi, johon toteutettu Miller-Rabin testi
             Palauttaa True jos annettu luku n on suurella todennäköisyydellä alkuluku.
@@ -54,6 +54,8 @@ class AlkulukuGeneraattori:
                 break
         while True:
             q = getrandbits(bittimaara//2)
+            if p == q:
+                continue
             if self.tarkista_onko_alkuluku(q):
                 break
         return p, q
