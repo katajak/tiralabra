@@ -45,7 +45,7 @@ class AlkulukuGeneraattori:
         return True
 
     def generoi_alkuluvut(self, bittimaara):
-        """Metodi, generoi oikean pituiset alkuluvut avainten luontia varten.
+        """Metodi, joka generoi oikean pituiset alkuluvut avainten luontia varten.
             Palauttaa tuplessa kaksi erisuuruista alkulukua p ja q.
         """
         while True:

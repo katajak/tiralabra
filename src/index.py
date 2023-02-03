@@ -3,6 +3,7 @@ from ui.app import UI
 from logic.primegen import AlkulukuGeneraattori
 from logic.keygen import AvainGeneraattori
 
+
 def main():
     io = IO()
     alkulukugeneraattori = AlkulukuGeneraattori()

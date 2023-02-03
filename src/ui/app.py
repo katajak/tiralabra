@@ -1,5 +1,6 @@
 import os
 
+
 class UI:
     """Komentorivikäyttöliittymä.
         io injektoidaan jotta käyttöliittymän testaaminen olisi mahdollista.
@@ -10,12 +11,17 @@ class UI:
         self.run = True
 
     def tyhjenna_naytto(self):
+        """Metodi, joka tyhjentää näytön oikealla komennolla
+            käyttöjärjestelmästä riippuen.
+        """
         if os.name == "nt":
             os.system("cls")
         else:
             os.system("clear")
 
     def suorita(self):
+        """Metodi, jolla käynnistetään komentorivikäyttöliittymä.
+        """
         self.tyhjenna_naytto()
         while self.run:
             self.io.kirjoita("Tervetuloa ohjelmaan! Mitä haluat tehdä?")
