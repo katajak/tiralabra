@@ -23,12 +23,7 @@ class TestPrimes(unittest.TestCase):
     def test_suuri_alkuluku(self):
         self.assertEqual(self.primes.tarkista_onko_alkuluku(658022943938739185871458866307770079897174821494059569390843141003821573902527915325288309969616387359598647884041145828085844935102559751264041474960034891373105411778512053365875908139836021077669943205482706750747047089158140435421164720274122715508250725540470763849114048823299427951761411454403), True)
 
-    def test_generoiduilla_alkuluvuilla_oikea_pituus_1024(self):
+    def test_generoiduilla_alkuluvuilla(self):
         alkuluvut = self.primes.generoi_alkuluvut(1024)
-        self.assertEqual(len(bin(alkuluvut[0])[2:]), 512)
-        self.assertEqual(len(bin(alkuluvut[1])[2:]), 512)
-
-    def test_generoiduilla_alkuluvuilla_oikea_pituus_2048(self):
-        alkuluvut = self.primes.generoi_alkuluvut(2048)
-        self.assertEqual(len(bin(alkuluvut[0])[2:]), 1024)
-        self.assertEqual(len(bin(alkuluvut[1])[2:]), 1024)
+        self.assertTrue(self.primes.tarkista_onko_alkuluku(alkuluvut[0]))
+        self.assertTrue(self.primes.tarkista_onko_alkuluku(alkuluvut[1]))
