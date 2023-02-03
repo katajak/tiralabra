@@ -1,4 +1,6 @@
 class AvainGeneraattori:
+    """Luokka, jonka tehtävänä on luoda RSA-avaimet
+    """
     def __init__(self, alkulukugeneraattori):
         self.alkulukugeneraattori = alkulukugeneraattori
 
