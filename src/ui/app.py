@@ -40,7 +40,7 @@ class UI:
                 if syote == "1":
                     syote = 1024
                     self.avaingeneraattori.generoi_avaimet(syote)
-                if syote == "2":
+                elif syote == "2":
                     syote = 2048
                     self.avaingeneraattori.generoi_avaimet(syote)
                 self.tyhjenna_naytto()
