@@ -10,10 +10,10 @@ class UI:
         self.run = True
 
     def tyhjenna_naytto(self):
-        if os.name == "posix":
-            os.system("clear")
-        else:
+        if os.name == "nt":
             os.system("cls")
+        else:
+            os.system("clear")
 
     def suorita(self):
         self.tyhjenna_naytto()
