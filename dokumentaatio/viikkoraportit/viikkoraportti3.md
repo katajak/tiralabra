@@ -20,4 +20,4 @@ Ei jäänyt epäselvyyksiä.
 
 ## Mitä teen seuraavaksi?
 
-Nyt olen melko varma että vaikein osuus avainten generoinnissa on tehty joten saan sen aika varmasti ensi viikolla. Jos jää aikaa niin yritän jo tehdä salauksen ja purkamisen
+Nyt olen melko varma että vaikein osuus avainten generoinnissa on tehty joten saan sen aika varmasti ensi viikolla valmiiksi. Jos jää aikaa niin yritän jo tehdä salauksen ja purkamisen
