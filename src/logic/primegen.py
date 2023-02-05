@@ -1,3 +1,4 @@
+from math import sqrt
 from random import randint, getrandbits
 
 
@@ -50,11 +51,13 @@ class AlkulukuGeneraattori:
         """
         while True:
             p = getrandbits(bittimaara//2)
+            if p%2 == 0:
+                continue
             if self.tarkista_onko_alkuluku(p):
                 break
         while True:
             q = getrandbits(bittimaara//2)
-            if p == q:
+            if p == q or p%2 == 0:
                 continue
             if self.tarkista_onko_alkuluku(q):
                 break
@@ -64,12 +67,13 @@ class AlkulukuGeneraattori:
         """Metodi, joka alustavasti tarkistaa, onko annettu luku alkuluku.
             Toimii jakamalla annettua lukua pienillä alkuluvuilla.
             Palauttaa True jos annettu luku ei ole jaettavissa millään pienellä
-            alkuluvulla (paitsi itsellään).
+            alkuluvulla välillä 2 < luku < sqrt(luku).
+            https://en.wikipedia.org/wiki/Primality_test#Simple_methods
         """
         alkuluvut = self.generoi_pienet_alkuluvut(100)
         for alkuluku in alkuluvut:
-            if luku == alkuluku:
-                continue
+            if alkuluku > sqrt(luku):
+                break
             if luku%alkuluku == 0:
                 return False
         return True

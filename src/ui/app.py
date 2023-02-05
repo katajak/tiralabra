@@ -43,7 +43,6 @@ class UI:
                 elif syote == "2":
                     syote = 2048
                     self.avaingeneraattori.generoi_avaimet(syote)
-                self.tyhjenna_naytto()
 
             elif syote == "2":
                 pass
