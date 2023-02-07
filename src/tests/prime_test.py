@@ -48,3 +48,20 @@ class TestPrimes(unittest.TestCase):
         self.assertEqual(self.primes.miller_rabin(7, 40), True)
         self.assertEqual(self.primes.miller_rabin(14, 40), False)
         self.assertEqual(self.primes.miller_rabin(7919, 40), True)
+
+    def test_miller_rabin_pienilla_alkuluvuilla(self):
+        alkuluvut = self.primes.generoi_pienet_alkuluvut(10**5)
+        alkuluvut.pop(0)
+        alkuluvut.pop(0)
+        for alkuluku in alkuluvut:
+            self.assertTrue(self.primes.miller_rabin(alkuluku, 40))
+
+    def test_esitarkistus_pienilla_alkuluvuilla(self):
+        alkuluvut = self.primes.generoi_pienet_alkuluvut(10**5)
+        for alkuluku in alkuluvut:
+            self.assertTrue(self.primes.esitarkistus(alkuluku))
+
+    def test_esitarkistus_ja_miller_rabin_pienilla_alkuluvuilla(self):
+        alkuluvut = self.primes.generoi_pienet_alkuluvut(10**5)
+        for alkuluku in alkuluvut:
+            self.assertTrue(self.primes.tarkista_onko_alkuluku(alkuluku))

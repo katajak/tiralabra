@@ -39,6 +39,8 @@ class AlkulukuGeneraattori:
             Ensin katsotaan esitarkastuksella, sitten Miller-Rabinilla.
             Palauttaa True jos annettu luku n on alkuluku.
         """
+        if luku == 2 or luku == 3:
+            return True
         if not self.esitarkistus(luku):
             return False
         if not self.miller_rabin(luku, 40):
