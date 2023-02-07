@@ -1,13 +1,29 @@
 import unittest
+from random import randint
 from logic.primegen import AlkulukuGeneraattori
-
+from logic.randomgen import SatunnaislukuGeneraattori
 
 # Miller-Rabinissa käytetään 40 iteraatiota
 # https://stackoverflow.com/questions/6325576/how-many-iterations-of-rabin-miller-should-i-use-for-cryptographic-safe-primes
 
+class StubRandomBits:
+    def __init__(self):
+        self.inputs = []
+
+    def satunnainen_int_valilla(self, a, b):
+        return randint(a, b)
+
+    def satunnainen_int_n_bittia(self, n):
+        return self.inputs.pop(0)
+
+    def lisaa_getrandbits(self, l):
+        for i in l:
+            self.inputs.append(i)
+
+
 class TestPrimes(unittest.TestCase):
     def setUp(self):
-        self.primes = AlkulukuGeneraattori()
+        self.primes = AlkulukuGeneraattori(SatunnaislukuGeneraattori())
 
     def test_alkulukuja(self):
         self.assertEqual(self.primes.tarkista_onko_alkuluku(4), False)
@@ -65,3 +81,13 @@ class TestPrimes(unittest.TestCase):
         alkuluvut = self.primes.generoi_pienet_alkuluvut(10**5)
         for alkuluku in alkuluvut:
             self.assertTrue(self.primes.tarkista_onko_alkuluku(alkuluku))
+
+    def test_kaksi_samaa_alkulukua(self):
+        fake_random = StubRandomBits()
+        primes = AlkulukuGeneraattori(fake_random)
+        fake_random.lisaa_getrandbits([170141183460469231731687303715884105727, 170141183460469231731687303715884105727, 162259276829213363391578010288127])
+        alkuluvut = primes.generoi_alkuluvut(1024)
+        self.assertEqual(alkuluvut[0], 170141183460469231731687303715884105727)
+        self.assertNotEqual(alkuluvut[1], 170141183460469231731687303715884105727)
+        self.assertEqual(alkuluvut[1], 162259276829213363391578010288127)
+

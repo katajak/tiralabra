@@ -3,6 +3,8 @@ from unittest.mock import Mock
 from ui.app import UI
 from logic.primegen import AlkulukuGeneraattori
 from logic.keygen import AvainGeneraattori
+from logic.randomgen import SatunnaislukuGeneraattori
+
 
 class StubIO:
     def __init__(self, inputs):
@@ -15,9 +17,11 @@ class StubIO:
     def kirjoita(self, syote):
         self.outputs.append(syote)
 
+
 class TestUI(unittest.TestCase):
     def setUp(self):
-        self.alkulukugeneraattori_mock = Mock(wraps=AlkulukuGeneraattori())
+        self.satunnaislukugeneraattori = SatunnaislukuGeneraattori()
+        self.alkulukugeneraattori_mock = Mock(wraps=AlkulukuGeneraattori(self.satunnaislukugeneraattori))
         self.avaingeneraattori_mock = Mock(wraps=AvainGeneraattori(self.alkulukugeneraattori_mock))
 
     def test_voi_poistua_ohjelmasta(self):

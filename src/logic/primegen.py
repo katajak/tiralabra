@@ -1,12 +1,11 @@
 from math import sqrt
-from random import randint, getrandbits
 
 
 class AlkulukuGeneraattori:
     """Luokka, jonka tehtävänä on luoda oikean pituisia alkulukuja avaimen generointia varten.
     """
-    def __init__(self):
-        pass
+    def __init__(self, satunnaislukugeneraattori):
+        self.satunnaislukugeneraattori = satunnaislukugeneraattori
 
     def miller_rabin(self, n, k):
         """Metodi, johon toteutettu Miller-Rabin testi
@@ -22,7 +21,7 @@ class AlkulukuGeneraattori:
             t += 1
 
         for _ in range(k):
-            a = randint(2, n-2)
+            a = self.satunnaislukugeneraattori.satunnainen_int_valilla(2, n-2)
             x = pow(a, s, n)
             if x in (1, n-1):
                 continue
@@ -39,7 +38,7 @@ class AlkulukuGeneraattori:
             Ensin katsotaan esitarkastuksella, sitten Miller-Rabinilla.
             Palauttaa True jos annettu luku n on alkuluku.
         """
-        if luku == 2 or luku == 3:
+        if luku in (2, 3):
             return True
         if not self.esitarkistus(luku):
             return False
@@ -52,13 +51,13 @@ class AlkulukuGeneraattori:
             Palauttaa tuplessa kaksi erisuuruista alkulukua p ja q.
         """
         while True:
-            p = getrandbits(bittimaara//2)
+            p = self.satunnaislukugeneraattori.satunnainen_int_n_bittia(bittimaara//2)
             if p%2 == 0:
                 continue
             if self.tarkista_onko_alkuluku(p):
                 break
         while True:
-            q = getrandbits(bittimaara//2)
+            q = self.satunnaislukugeneraattori.satunnainen_int_n_bittia(bittimaara//2)
             if p == q or p%2 == 0:
                 continue
             if self.tarkista_onko_alkuluku(q):
