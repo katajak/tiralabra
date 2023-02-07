@@ -27,3 +27,24 @@ class TestPrimes(unittest.TestCase):
         alkuluvut = self.primes.generoi_alkuluvut(1024)
         self.assertTrue(self.primes.tarkista_onko_alkuluku(alkuluvut[0]))
         self.assertTrue(self.primes.tarkista_onko_alkuluku(alkuluvut[1]))
+
+    def test_eratostheneen_seula(self):
+        alkuluvut = self.primes.generoi_pienet_alkuluvut(29)
+        self.assertEqual(alkuluvut[0], 2)
+        self.assertEqual(alkuluvut[1], 3)
+        self.assertEqual(alkuluvut[2], 5)
+        self.assertEqual(alkuluvut[3], 7)
+        self.assertEqual(alkuluvut[4], 11)
+        self.assertEqual(alkuluvut[5], 13)
+        self.assertEqual(alkuluvut[6], 17)
+        self.assertEqual(alkuluvut[7], 19)
+        self.assertEqual(alkuluvut[8], 23)
+        self.assertEqual(alkuluvut[9], 29)
+
+    def test_miller_rabin(self):
+        self.assertEqual(self.primes.tarkista_onko_alkuluku(4), False)
+        self.assertEqual(self.primes.tarkista_onko_alkuluku(5), True)
+        self.assertEqual(self.primes.tarkista_onko_alkuluku(8), False)
+        self.assertEqual(self.primes.tarkista_onko_alkuluku(7), True)
+        self.assertEqual(self.primes.tarkista_onko_alkuluku(14), False)
+        self.assertEqual(self.primes.tarkista_onko_alkuluku(7919), True)

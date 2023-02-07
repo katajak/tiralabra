@@ -79,15 +79,19 @@ class AlkulukuGeneraattori:
         return True
 
     def generoi_pienet_alkuluvut(self, n):
-        """Metodi, joka generoi pieniä alkulukua lukuun n asti.
+        """Metodi, joka generoi pieniä alkulukua lukuun n asti Eratostheneen seulalla.
             Palauttaa listan alkuluvuista n asti
         """
+        prime = [True for _ in range(n+1)]
+        p = 2
+        while p*p <= n:
+            if prime[p]:
+                for i in range(p*p, n+1, p):
+                    prime[i] = False
+            p += 1
+
         alkuluvut = []
-        for luku in range(n+1):
-            if luku > 1:
-                for i in range(2, luku):
-                    if luku%i == 0:
-                        break
-                else:
-                    alkuluvut.append(luku)
+        for p in range(2, n+1):
+            if prime[p]:
+                alkuluvut.append(p)
         return alkuluvut
