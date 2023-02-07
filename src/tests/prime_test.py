@@ -42,9 +42,9 @@ class TestPrimes(unittest.TestCase):
         self.assertEqual(alkuluvut[9], 29)
 
     def test_miller_rabin(self):
-        self.assertEqual(self.primes.tarkista_onko_alkuluku(4), False)
-        self.assertEqual(self.primes.tarkista_onko_alkuluku(5), True)
-        self.assertEqual(self.primes.tarkista_onko_alkuluku(8), False)
-        self.assertEqual(self.primes.tarkista_onko_alkuluku(7), True)
-        self.assertEqual(self.primes.tarkista_onko_alkuluku(14), False)
-        self.assertEqual(self.primes.tarkista_onko_alkuluku(7919), True)
+        self.assertEqual(self.primes.miller_rabin(4, 40), False)
+        self.assertEqual(self.primes.miller_rabin(5, 40), True)
+        self.assertEqual(self.primes.miller_rabin(8, 40), False)
+        self.assertEqual(self.primes.miller_rabin(7, 40), True)
+        self.assertEqual(self.primes.miller_rabin(14, 40), False)
+        self.assertEqual(self.primes.miller_rabin(7919, 40), True)
