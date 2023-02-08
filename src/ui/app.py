@@ -11,6 +11,7 @@ class UI:
         self.salaus_purku = salaus_purku
         self.run = True
         self.tyhjenna = False
+        self.viesti_kayttajalle = []
 
     def tyhjenna_naytto(self):
         """Metodi, joka tyhjentää näytön oikealla komennolla
@@ -25,12 +26,18 @@ class UI:
         """Metodi, jolla käynnistetään komentorivikäyttöliittymä.
         """
         self.tyhjenna_naytto()
-        self.io.kirjoita("Tervetuloa ohjelmaan! Mitä haluat tehdä?")
+        self.io.kirjoita("Tervetuloa ohjelmaan! Mitä haluat tehdä?\n")
         while self.run:
             if self.tyhjenna:
                 self.tyhjenna_naytto()
                 self.tyhjenna = False
-            self.io.kirjoita("\n1: Generoi avaimet")
+            while self.viesti_kayttajalle:
+                if len(self.viesti_kayttajalle) == 1:
+                    self.io.kirjoita(f"{self.viesti_kayttajalle.pop(0)}\n")
+                else:
+                    self.io.kirjoita(f"{self.viesti_kayttajalle.pop(0)}")
+
+            self.io.kirjoita("1: Generoi avaimet")
             self.io.kirjoita("2: Salaa viesti")
             self.io.kirjoita("3: Pura salattu viesti")
             self.io.kirjoita("4: Listaa avaimet")
@@ -62,8 +69,8 @@ class UI:
                 elif syote == "3":
                     syote = 4096
                     self.avaingeneraattori.generoi_avaimet(syote, nimi)
-                self.tyhjenna_naytto()
-                self.io.kirjoita("Avaimet generoitu onnistuneesti.")
+                self.tyhjenna = True
+                self.viesti_kayttajalle.append("Avaimet generoitu onnistuneesti.")
 
             elif syote == "2":
                 if self.avaimenpera.avainten_maara() > 0:
@@ -80,9 +87,10 @@ class UI:
                         continue
                     pituus = len(syote.encode())
                     salattu_viesti = self.salaus_purku.salaa_viesti(julkinen_avain, syote)
-                    self.io.kirjoita("\nViesti salattu onnistuneesti.")
+                    self.tyhjenna = True
+                    self.viesti_kayttajalle.append("Viesti salattu onnistuneesti.")
                 else:
-                    self.io.kirjoita("Et ole vielä generoinut avaimia!")
+                    self.viesti_kayttajalle.append("Et ole vielä generoinut avaimia!")
 
             elif syote == "3":
                 if self.avaimenpera.avainten_maara() > 0:
@@ -95,16 +103,17 @@ class UI:
                     yksityinen_avain = self.avaimenpera.hae_avaimet_nimella(nimi)[0]
                     purettu_viesti = self.salaus_purku.pura_salaus(yksityinen_avain,
                                                                 salattu_viesti, pituus)
-                    self.io.kirjoita(purettu_viesti)
+                    self.tyhjenna = True
+                    self.viesti_kayttajalle.append(purettu_viesti)
                 else:
-                    self.io.kirjoita("Et ole vielä generoinut avaimia!")
+                    self.viesti_kayttajalle.append("Et ole vielä generoinut avaimia!")
 
             elif syote == "4":
                 if self.avaimenpera.avainten_maara() > 0:
                     for avaimet in self.avaimenpera.avaimet():
-                        self.io.kirjoita(avaimet[0])
+                        self.viesti_kayttajalle.append(avaimet[0])
                 else:
-                    self.io.kirjoita("Et ole vielä generoinut avaimia!")
+                    self.viesti_kayttajalle.append("Et ole vielä generoinut avaimia!")
 
             elif syote == "q":
                 self.run = False
