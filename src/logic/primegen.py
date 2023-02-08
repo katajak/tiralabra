@@ -1,4 +1,4 @@
-from math import sqrt
+from math import isqrt
 
 
 class AlkulukuGeneraattori:
@@ -73,7 +73,7 @@ class AlkulukuGeneraattori:
         """
         alkuluvut = self.generoi_pienet_alkuluvut(100)
         for alkuluku in alkuluvut:
-            if alkuluku > sqrt(luku):
+            if alkuluku > isqrt(luku):
                 break
             if luku%alkuluku == 0:
                 return False

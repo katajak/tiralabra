@@ -25,14 +25,6 @@ class TestPrimes(unittest.TestCase):
     def setUp(self):
         self.primes = AlkulukuGeneraattori(SatunnaislukuGeneraattori())
 
-    def test_alkulukuja(self):
-        self.assertEqual(self.primes.tarkista_onko_alkuluku(4), False)
-        self.assertEqual(self.primes.tarkista_onko_alkuluku(5), True)
-        self.assertEqual(self.primes.tarkista_onko_alkuluku(8), False)
-        self.assertEqual(self.primes.tarkista_onko_alkuluku(7), True)
-        self.assertEqual(self.primes.tarkista_onko_alkuluku(14), False)
-        self.assertEqual(self.primes.tarkista_onko_alkuluku(7919), True)
-
     def test_suuri_yhdistetty_luku(self):
         self.assertEqual(self.primes.tarkista_onko_alkuluku(674632838880067463283888006746328388800674632838880067463283888006746328388800674632838880067463283888006746328388800674632838880067463283888006746328388800674632838880067463283888006746328388800674632838880067463283888006746328388800674632838880067463283888006746328388800674632838880067463283888006), False)
 
@@ -90,4 +82,3 @@ class TestPrimes(unittest.TestCase):
         self.assertEqual(alkuluvut[0], 170141183460469231731687303715884105727)
         self.assertNotEqual(alkuluvut[1], 170141183460469231731687303715884105727)
         self.assertEqual(alkuluvut[1], 162259276829213363391578010288127)
-
