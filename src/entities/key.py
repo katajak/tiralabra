@@ -1,4 +1,6 @@
 class Avain:
+    """Luokka, joka säilyttää tarvittavat tiedot avaimesta.
+    """
     def __init__(self, nimi, tyyppi, modulus, eksponentti):
         self.nimi = nimi
         self.tyyppi = tyyppi

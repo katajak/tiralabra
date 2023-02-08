@@ -2,13 +2,16 @@ from entities.key import Avain
 
 
 class AvainGeneraattori:
-    """Luokka, jonka tehtävänä on luoda RSA-avaimet
+    """Luokka, jonka tehtävänä on luoda RSA-avaimet.
     """
     def __init__(self, alkulukugeneraattori, avaimenpera):
         self.alkulukugeneraattori = alkulukugeneraattori
         self.avaimenpera = avaimenpera
 
     def generoi_avaimet(self, bittimaara, nimi):
+        """Metodi, joka luo avainoliot, ja lisää avaimet avaimenperä-olioon
+        Ei varsinaisesti palauta mitään.
+        """
         p, q = self.alkulukugeneraattori.generoi_alkuluvut(bittimaara)
         n = p*q
         l = self.carmichaelin_funktio(p, q)
@@ -19,7 +22,8 @@ class AvainGeneraattori:
         self.avaimenpera.lisaa_avaimet(yksityinen_avain, julkinen_avain)
 
     def syt(self, p, q):
-        """https://en.wikipedia.org/wiki/Euclidean_algorithm#Implementations
+        """Eukleideen algoritmi, joka ratkaisee p ja q suurimman yhteisen tekijän.
+        https://en.wikipedia.org/wiki/Euclidean_algorithm#Implementations
         """
         while q:
             t = q
@@ -28,4 +32,6 @@ class AvainGeneraattori:
         return p
 
     def carmichaelin_funktio(self, p, q):
+        """Carmichaelin funktio joka laskee lambdan arvon kun sille annetaan p ja q.
+        """
         return abs((p-1)*(q-1)) // self.syt(p-1, q-1)
