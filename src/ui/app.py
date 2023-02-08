@@ -38,6 +38,8 @@ class UI:
                 self.io.kirjoita("2: RSA 2048-bittiä")
                 self.io.kirjoita("3: RSA 4096-bittiä")
                 syote = self.io.lue("\nValinta: ")
+                self.tyhjenna_naytto()
+                self.io.kirjoita("Generoidaan avaimia...")
                 if syote == "1":
                     syote = 1024
                     self.avaingeneraattori.generoi_avaimet(syote)
@@ -56,3 +58,5 @@ class UI:
 
             elif syote == "q":
                 self.run = False
+
+            self.tyhjenna_naytto()

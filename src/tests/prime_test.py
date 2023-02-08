@@ -49,14 +49,6 @@ class TestPrimes(unittest.TestCase):
         self.assertEqual(alkuluvut[8], 23)
         self.assertEqual(alkuluvut[9], 29)
 
-    def test_miller_rabin(self):
-        self.assertEqual(self.primes.miller_rabin(4, 40), False)
-        self.assertEqual(self.primes.miller_rabin(5, 40), True)
-        self.assertEqual(self.primes.miller_rabin(8, 40), False)
-        self.assertEqual(self.primes.miller_rabin(7, 40), True)
-        self.assertEqual(self.primes.miller_rabin(14, 40), False)
-        self.assertEqual(self.primes.miller_rabin(7919, 40), True)
-
     def test_miller_rabin_pienilla_alkuluvuilla(self):
         alkuluvut = self.primes.generoi_pienet_alkuluvut(10**5)
         alkuluvut.pop(0)
@@ -82,3 +74,18 @@ class TestPrimes(unittest.TestCase):
         self.assertEqual(alkuluvut[0], 170141183460469231731687303715884105727)
         self.assertNotEqual(alkuluvut[1], 170141183460469231731687303715884105727)
         self.assertEqual(alkuluvut[1], 162259276829213363391578010288127)
+
+    def test_avaimella_oikea_pituus_1024(self):
+        p, q = self.primes.generoi_alkuluvut(1024)
+        n = p*q
+        self.assertGreater(len(bin(n)[2:]), 1000)
+
+    def test_avaimella_oikea_pituus_2048(self):
+        p, q = self.primes.generoi_alkuluvut(2048)
+        n = p*q
+        self.assertGreater(len(bin(n)[2:]), 2000)
+
+    def test_avaimella_oikea_pituus_4096(self):
+        p, q = self.primes.generoi_alkuluvut(4096)
+        n = p*q
+        self.assertGreater(len(bin(n)[2:]), 4000)
