@@ -11,11 +11,12 @@ def main():
     io = IO()
     yksityinen_avain = Avain()
     julkinen_avain = Avain()
+    avaimet = yksityinen_avain, julkinen_avain
     salaus_purku = SalausJaPurku()
     satunnaislukugeneraattori = SatunnaislukuGeneraattori()
     alkulukugeneraattori = AlkulukuGeneraattori(satunnaislukugeneraattori)
     avaingeneraattori = AvainGeneraattori(alkulukugeneraattori)
-    sovellus = UI(io, yksityinen_avain, julkinen_avain, avaingeneraattori, salaus_purku)
+    sovellus = UI(io, avaimet, avaingeneraattori, salaus_purku)
     sovellus.suorita()
 
 if __name__ == "__main__":

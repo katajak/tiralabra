@@ -5,10 +5,10 @@ class UI:
     """Komentorivikäyttöliittymä.
         io injektoidaan jotta käyttöliittymän testaaminen olisi mahdollista.
     """
-    def __init__(self, io, yksityinen_avain, julkinen_avain, avaingeneraattori, salaus_purku):
+    def __init__(self, io, avaimet, avaingeneraattori, salaus_purku):
         self.io = io
-        self.yksityinen_avain = yksityinen_avain
-        self.julkinen_avain = julkinen_avain
+        self.yksityinen_avain = avaimet[0]
+        self.julkinen_avain = avaimet[1]
         self.avaingeneraattori = avaingeneraattori
         self.salaus_purku = salaus_purku
         self.run = True
@@ -45,13 +45,16 @@ class UI:
                 self.io.kirjoita("Generoidaan avaimia...")
                 if syote == "1":
                     syote = 1024
-                    self.avaingeneraattori.generoi_avaimet(syote, self.yksityinen_avain, self.julkinen_avain)
+                    self.avaingeneraattori.generoi_avaimet(syote, self.yksityinen_avain,
+                                                           self.julkinen_avain)
                 elif syote == "2":
                     syote = 2048
-                    self.avaingeneraattori.generoi_avaimet(syote, self.yksityinen_avain, self.julkinen_avain)
+                    self.avaingeneraattori.generoi_avaimet(syote, self.yksityinen_avain,
+                                                           self.julkinen_avain)
                 elif syote == "3":
                     syote = 4096
-                    self.avaingeneraattori.generoi_avaimet(syote, self.yksityinen_avain, self.julkinen_avain)
+                    self.avaingeneraattori.generoi_avaimet(syote, self.yksityinen_avain,
+                                                           self.julkinen_avain)
                 self.tyhjenna_naytto()
                 self.io.kirjoita("Avaimet generoitu onnistuneesti.")
 
@@ -63,7 +66,8 @@ class UI:
                 self.io.kirjoita("\nViesti salattu onnistuneesti.")
 
             elif syote == "3":
-                purettu_viesti = self.salaus_purku.pura_salaus(self.yksityinen_avain, salattu_viesti, pituus)
+                purettu_viesti = self.salaus_purku.pura_salaus(self.yksityinen_avain,
+                                                               salattu_viesti, pituus)
                 self.io.kirjoita(f"Purettu viesti:\n{purettu_viesti}")
 
             elif syote == "q":
