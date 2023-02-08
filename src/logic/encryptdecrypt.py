@@ -4,5 +4,8 @@ class SalausJaPurku:
                    julkinen_avain.eksponentti, julkinen_avain.modulus)
 
     def pura_salaus(self, yksityinen_avain, viesti, pituus):
-        return pow(viesti, yksityinen_avain.eksponentti,
-                   yksityinen_avain.modulus).to_bytes(pituus, "big").decode()
+        try:
+            return pow(viesti, yksityinen_avain.eksponentti,
+                    yksityinen_avain.modulus).to_bytes(pituus, "big").decode()
+        except OverflowError:
+            return "Viestin purkaminen epäonnistui. Käytitkö oikeaa avainta?"

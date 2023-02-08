@@ -1,19 +1,22 @@
+from entities.key import Avain
+
+
 class AvainGeneraattori:
     """Luokka, jonka tehtävänä on luoda RSA-avaimet
     """
-    def __init__(self, alkulukugeneraattori):
+    def __init__(self, alkulukugeneraattori, avaimenpera):
         self.alkulukugeneraattori = alkulukugeneraattori
+        self.avaimenpera = avaimenpera
 
-    def generoi_avaimet(self, bittimaara, yksityinen_avain, julkinen_avain):
+    def generoi_avaimet(self, bittimaara, nimi):
         p, q = self.alkulukugeneraattori.generoi_alkuluvut(bittimaara)
         n = p*q
         l = self.carmichaelin_funktio(p, q)
         e = 65537
         d = pow(e, -1, l)
-        yksityinen_avain.modulus = n
-        yksityinen_avain.eksponentti = e
-        julkinen_avain.modulus = n
-        julkinen_avain.eksponentti = d
+        yksityinen_avain = Avain(nimi, bittimaara, n, d)
+        julkinen_avain = Avain(nimi, bittimaara, n, e)
+        self.avaimenpera.lisaa_avaimet(yksityinen_avain, julkinen_avain)
 
     def syt(self, p, q):
         """https://en.wikipedia.org/wiki/Euclidean_algorithm#Implementations
