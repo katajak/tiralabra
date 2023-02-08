@@ -4,17 +4,25 @@ class AvainGeneraattori:
     def __init__(self, alkulukugeneraattori):
         self.alkulukugeneraattori = alkulukugeneraattori
 
-    def generoi_avaimet(self, bittimaara):
+    def generoi_avaimet(self, bittimaara, yksityinen_avain, julkinen_avain):
         p, q = self.alkulukugeneraattori.generoi_alkuluvut(bittimaara)
         n = p*q
+        l = self.carmichaelin_funktio(p, q)
+        e = 65537
+        d = pow(e, -1, l)
+        yksityinen_avain.modulus = n
+        yksityinen_avain.eksponentti = e
+        julkinen_avain.modulus = n
+        julkinen_avain.eksponentti = d
 
     def syt(self, p, q):
         """https://en.wikipedia.org/wiki/Euclidean_algorithm#Implementations
         """
-        if q == 0:
-            return p
-        else:
-            return self.syt(q, p%q)
+        while q:
+            t = q
+            q = p%q
+            p = t
+        return p
 
     def carmichaelin_funktio(self, p, q):
-        pass
+        return abs((p-1)*(q-1)) // self.syt(p-1, q-1)
