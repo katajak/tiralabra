@@ -12,6 +12,7 @@ class Avaimenpera:
         for avaimet in self.avaimenpera:
             if nimi in (avaimet[0].nimi, avaimet[1].nimi):
                 return avaimet
+            return None
 
     def avainten_maara(self):
         return len(self.avaimenpera)
