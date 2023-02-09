@@ -18,5 +18,5 @@ class SalausJaPurku:
         try:
             return pow(viesti, yksityinen_avain.eksponentti,
                     yksityinen_avain.modulus).to_bytes(pituus, "big").decode()
-        except OverflowError:
+        except Exception:
             return "Viestin purkaminen epäonnistui. Käytitkö oikeaa avainta?"
