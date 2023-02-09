@@ -74,13 +74,13 @@ class UI:
 
             elif syote == "2":
                 if self.avaimenpera.avainten_maara() > 0:
-                    for avaimet in self.avaimenpera.avaimet():
-                        self.io.kirjoita(avaimet[1])
+                    for avaimet in self.avaimenpera.julkiset_avaimet():
+                        self.io.kirjoita(avaimet)
                     nimi = self.io.lue("\nAnna käytettävän avaimen nimi: ")
                     if len(nimi) == 0:
                         self.tyhjenna = True
                         continue
-                    julkinen_avain = self.avaimenpera.hae_avaimet_nimella(nimi)[1]
+                    julkinen_avain = self.avaimenpera.hae_julkinen_avain_nimella(nimi)
                     syote = self.io.lue("\nKirjoita viesti:\n\n")
                     if len(syote) == 0:
                         self.tyhjenna = True
@@ -94,13 +94,13 @@ class UI:
 
             elif syote == "3":
                 if self.avaimenpera.avainten_maara() > 0:
-                    for avaimet in self.avaimenpera.avaimet():
-                        self.io.kirjoita(avaimet[1])
+                    for avaimet in self.avaimenpera.yksityiset_avaimet():
+                        self.io.kirjoita(avaimet)
                     nimi = self.io.lue("\nAnna käytettävän avaimen nimi: ")
                     if len(nimi) == 0:
                         self.tyhjenna = True
                         continue
-                    yksityinen_avain = self.avaimenpera.hae_avaimet_nimella(nimi)[0]
+                    yksityinen_avain = self.avaimenpera.hae_yksityinen_avain_nimella(nimi)
                     purettu_viesti = self.salaus_purku.pura_salaus(yksityinen_avain,
                                                                 salattu_viesti, pituus)
                     self.tyhjenna = True
@@ -111,7 +111,7 @@ class UI:
             elif syote == "4":
                 if self.avaimenpera.avainten_maara() > 0:
                     for avaimet in self.avaimenpera.avaimet():
-                        self.viesti_kayttajalle.append(avaimet[0])
+                        self.viesti_kayttajalle.append(avaimet)
                 else:
                     self.viesti_kayttajalle.append("Et ole vielä generoinut avaimia!")
 

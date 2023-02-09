@@ -17,9 +17,10 @@ class AvainGeneraattori:
         l = self.carmichaelin_funktio(p, q)
         e = 65537
         d = pow(e, -1, l)
-        yksityinen_avain = Avain(nimi, bittimaara, n, d)
-        julkinen_avain = Avain(nimi, bittimaara, n, e)
-        self.avaimenpera.lisaa_avaimet(yksityinen_avain, julkinen_avain)
+        yksityinen_avain = Avain(nimi, "yksityinen", bittimaara, n, d)
+        julkinen_avain = Avain(nimi, "julkinen", bittimaara, n, e)
+        self.avaimenpera.lisaa_avain(yksityinen_avain)
+        self.avaimenpera.lisaa_avain(julkinen_avain)
 
     def syt(self, p, q):
         """Eukleideen algoritmi, joka ratkaisee p ja q suurimman yhteisen tekijän.
