@@ -8,7 +8,7 @@ from logic.encryptdecrypt import SalausJaPurku
 from entities.keychain import Avaimenpera
 
 
-class TestPrimes(unittest.TestCase):
+class TestEncryptDecrypt(unittest.TestCase):
     def setUp(self):
         self.avaimenpera = Avaimenpera()
         self.avaingeneraattori = AvainGeneraattori(AlkulukuGeneraattori(SatunnaislukuGeneraattori()), self.avaimenpera)
