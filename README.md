@@ -8,6 +8,8 @@
 
 [Testausdokumentti](https://github.com/katajak/tiralabra/blob/main/dokumentaatio/testausdokumentti.md)
 
+[Toteutusdokumentti](https://github.com/katajak/tiralabra/blob/main/dokumentaatio/toteutusdokumentti.md)
+
 [Viikkoraportti 1](https://github.com/katajak/tiralabra/blob/main/dokumentaatio/viikkoraportit/viikkoraportti1.md)
 
 [Viikkoraportti 2](https://github.com/katajak/tiralabra/blob/main/dokumentaatio/viikkoraportit/viikkoraportti2.md)
