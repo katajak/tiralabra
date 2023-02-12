@@ -15,3 +15,5 @@
 [Viikkoraportti 2](https://github.com/katajak/tiralabra/blob/main/dokumentaatio/viikkoraportit/viikkoraportti2.md)
 
 [Viikkoraportti 3](https://github.com/katajak/tiralabra/blob/main/dokumentaatio/viikkoraportit/viikkoraportti3.md)
+
+[Viikkoraportti 4](https://github.com/katajak/tiralabra/blob/main/dokumentaatio/viikkoraportit/viikkoraportti4.md)
