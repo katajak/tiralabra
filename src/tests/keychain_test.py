@@ -2,7 +2,7 @@ import unittest
 from tempfile import NamedTemporaryFile
 from entities.keychain import Avaimenpera
 from entities.key import Avain
-from datahandler import TiedostonKasittelija
+from repositories.datahandler import TiedostonKasittelija
 
 
 class TestKeychain(unittest.TestCase):

@@ -4,7 +4,7 @@ from logic.keygen import AvainGeneraattori
 from logic.primegen import AlkulukuGeneraattori
 from logic.randomgen import SatunnaislukuGeneraattori
 from entities.keychain import Avaimenpera
-from datahandler import TiedostonKasittelija
+from repositories.datahandler import TiedostonKasittelija
 
 
 def main():
