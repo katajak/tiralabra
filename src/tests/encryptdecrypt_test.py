@@ -26,7 +26,7 @@ class TestEncryptDecrypt(unittest.TestCase):
         yksityinen_avain = self.avaimenpera.hae_yksityinen_avain_nimella("testi1024")
         julkinen_avain = self.avaimenpera.hae_julkinen_avain_nimella("testi1024")
         self.salaus_purku.salaa_viesti(julkinen_avain, viesti, self.testitiedosto.name)
-        salattu_viesti = self.postilaatikko.hae_viesti_nimella("viesti.msg")
+        salattu_viesti = self.postilaatikko.hae_viesti_nimella(self.testitiedosto.name)
         purettu_viesti = self.salaus_purku.pura_salaus(yksityinen_avain, salattu_viesti)
         self.assertEqual(viesti, purettu_viesti)
 
@@ -37,7 +37,7 @@ class TestEncryptDecrypt(unittest.TestCase):
         yksityinen_avain = self.avaimenpera.hae_yksityinen_avain_nimella("testi2048")
         julkinen_avain = self.avaimenpera.hae_julkinen_avain_nimella("testi2048")
         self.salaus_purku.salaa_viesti(julkinen_avain, viesti, self.testitiedosto.name)
-        salattu_viesti = self.postilaatikko.hae_viesti_nimella("viesti.msg")
+        salattu_viesti = self.postilaatikko.hae_viesti_nimella(self.testitiedosto.name)
         purettu_viesti = self.salaus_purku.pura_salaus(yksityinen_avain, salattu_viesti)
         self.assertEqual(viesti, purettu_viesti)
 
