@@ -44,6 +44,7 @@ class UI:
             self.io.kirjoita("2: Salaa viesti")
             self.io.kirjoita("3: Pura salattu viesti")
             self.io.kirjoita("4: Listaa avaimet")
+            self.io.kirjoita("5: Listaa viestit")
             self.io.kirjoita("q: Lopeta ohjelma")
             syote = self.io.lue("\nValinta: ")
 
@@ -78,6 +79,7 @@ class UI:
 
             elif syote == "2":
                 if self.avaimenpera.avainten_maara() > 0:
+                    self.io.kirjoita("Julkiset avaimet:\n")
                     for avaimet in self.avaimenpera.julkiset_avaimet():
                         self.io.kirjoita(avaimet)
                     nimi = self.io.lue("\nAnna käytettävän avaimen nimi: ")
@@ -85,18 +87,24 @@ class UI:
                         self.tyhjenna = True
                         continue
                     julkinen_avain = self.avaimenpera.hae_julkinen_avain_nimella(nimi)
+                    tiedosto = self.io.lue("\nAnna viestin tiedoston nimi: ")
+                    tiedosto = tiedosto + ".msg"
+                    if len(tiedosto) == 0:
+                        self.tyhjenna = True
+                        continue
                     syote = self.io.lue("\nKirjoita viesti:\n\n")
                     if len(syote) == 0:
                         self.tyhjenna = True
                         continue
-                    self.salaus_purku.salaa_viesti(julkinen_avain, syote, "viesti.msg")
+                    self.salaus_purku.salaa_viesti(julkinen_avain, syote, tiedosto)
                     self.tyhjenna = True
                     self.viesti_kayttajalle.append("Viesti salattu onnistuneesti.")
                 else:
-                    self.viesti_kayttajalle.append("Et ole vielä generoinut avaimia!")
+                    self.viesti_kayttajalle.append("Julkisia avaimia ei löytynyt.")
 
             elif syote == "3":
                 if self.avaimenpera.avainten_maara() > 0:
+                    self.io.kirjoita("Yksityiset avaimet:\n")
                     for avaimet in self.avaimenpera.yksityiset_avaimet():
                         self.io.kirjoita(avaimet)
                     nimi = self.io.lue("\nAnna käytettävän avaimen nimi: ")
@@ -104,19 +112,32 @@ class UI:
                         self.tyhjenna = True
                         continue
                     yksityinen_avain = self.avaimenpera.hae_yksityinen_avain_nimella(nimi)
-                    salattu_viesti = self.postilaatikko.hae_viesti_nimella("viesti.msg")
+                    self.tyhjenna_naytto()
+                    self.io.kirjoita("Tiedostot:\n")
+                    for viesti in self.postilaatikko.viestit():
+                        self.io.kirjoita(viesti.tiedoston_nimi[:-4])
+                    tiedosto = self.io.lue("\nAnna viestin tiedoston nimi: ")
+                    tiedosto = tiedosto + ".msg"
+                    salattu_viesti = self.postilaatikko.hae_viesti_nimella(tiedosto)
                     purettu_viesti = self.salaus_purku.pura_salaus(yksityinen_avain, salattu_viesti)
                     self.tyhjenna = True
                     self.viesti_kayttajalle.append(purettu_viesti)
                 else:
-                    self.viesti_kayttajalle.append("Et ole vielä generoinut avaimia!")
+                    self.viesti_kayttajalle.append("Yksityisiä avaimia ei löytynyt.")
 
             elif syote == "4":
                 if self.avaimenpera.avainten_maara() > 0:
                     for avaimet in self.avaimenpera.avaimet():
                         self.viesti_kayttajalle.append(avaimet)
                 else:
-                    self.viesti_kayttajalle.append("Et ole vielä generoinut avaimia!")
+                    self.viesti_kayttajalle.append("Avaimia ei löytynyt.")
+
+            elif syote == "5":
+                if self.postilaatikko.viestien_maara() > 0:
+                    for viesti in self.postilaatikko.viestit():
+                        self.viesti_kayttajalle.append(viesti.tiedoston_nimi)
+                else:
+                    self.viesti_kayttajalle.append("Viestejä ei löytynyt.")
 
             elif syote == "q":
                 self.run = False

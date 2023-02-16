@@ -48,6 +48,6 @@ class TiedostonKasittelija:
                     for rivi in file:
                         rivi = rivi.replace("\n", "")
                         osat = rivi.split(";")
-                        viesti = Viesti(int(osat[0]), int(osat[1]))
+                        viesti = Viesti(int(osat[0]), int(osat[1]), str(tiedosto))
                         viestit.append(viesti)
-        return viestit
+        return sorted(viestit, key=operator.attrgetter("tiedoston_nimi"))

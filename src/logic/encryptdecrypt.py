@@ -13,7 +13,7 @@ class SalausJaPurku:
         Palauttaa kokonaisluvun, joka on salattu viesti.
         """
         viesti_olio = Viesti(pow(int.from_bytes(viesti.encode(), "big"), julkinen_avain.eksponentti,
-                                 julkinen_avain.modulus), len(viesti.encode()))
+                                 julkinen_avain.modulus), len(viesti.encode()), tiedoston_nimi)
         self.postilaatikko.lisaa_viesti(viesti_olio, tiedoston_nimi)
 
     def pura_salaus(self, yksityinen_avain, viesti):
@@ -26,4 +26,4 @@ class SalausJaPurku:
             return pow(viesti.viesti, yksityinen_avain.eksponentti,
                     yksityinen_avain.modulus).to_bytes(viesti.pituus, "big").decode()
         except Exception:
-            return "Viestin purkaminen epäonnistui. Käytitkö oikeaa avainta?"
+            return "Viestin purkaminen epäonnistui."
