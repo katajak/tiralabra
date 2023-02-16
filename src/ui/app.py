@@ -4,9 +4,10 @@ import os
 class UI:
     """Komentorivikäyttöliittymä.
     """
-    def __init__(self, io, avaimenpera, avaingeneraattori, salaus_purku):
+    def __init__(self, io, avaimenpera, postilaatikko, avaingeneraattori, salaus_purku):
         self.io = io
         self.avaimenpera = avaimenpera
+        self.postilaatikko = postilaatikko
         self.avaingeneraattori = avaingeneraattori
         self.salaus_purku = salaus_purku
         self.run = True
@@ -27,6 +28,7 @@ class UI:
         """
         self.tyhjenna_naytto()
         self.avaimenpera.lisaa_avaimet_tiedostoista()
+        self.postilaatikko.lisaa_viestit_tiedostoista()
         self.io.kirjoita("Tervetuloa ohjelmaan! Mitä haluat tehdä?\n")
         while self.run:
             if self.tyhjenna:
@@ -87,8 +89,7 @@ class UI:
                     if len(syote) == 0:
                         self.tyhjenna = True
                         continue
-                    pituus = len(syote.encode())
-                    salattu_viesti = self.salaus_purku.salaa_viesti(julkinen_avain, syote)
+                    self.salaus_purku.salaa_viesti(julkinen_avain, syote, "viesti.msg")
                     self.tyhjenna = True
                     self.viesti_kayttajalle.append("Viesti salattu onnistuneesti.")
                 else:
@@ -103,8 +104,8 @@ class UI:
                         self.tyhjenna = True
                         continue
                     yksityinen_avain = self.avaimenpera.hae_yksityinen_avain_nimella(nimi)
-                    purettu_viesti = self.salaus_purku.pura_salaus(yksityinen_avain,
-                                                                salattu_viesti, pituus)
+                    salattu_viesti = self.postilaatikko.hae_viesti_nimella("viesti.msg")
+                    purettu_viesti = self.salaus_purku.pura_salaus(yksityinen_avain, salattu_viesti)
                     self.tyhjenna = True
                     self.viesti_kayttajalle.append(purettu_viesti)
                 else:

@@ -5,17 +5,19 @@ from logic.keygen import AvainGeneraattori
 from logic.randomgen import SatunnaislukuGeneraattori
 from logic.encryptdecrypt import SalausJaPurku
 from entities.keychain import Avaimenpera
+from entities.inbox import Postilaatikko
 from repositories.datahandler import TiedostonKasittelija
 
 
 def main():
     io = IO()
-    avaimenpera = Avaimenpera(TiedostonKasittelija())
-    salaus_purku = SalausJaPurku()
-    satunnaislukugeneraattori = SatunnaislukuGeneraattori()
-    alkulukugeneraattori = AlkulukuGeneraattori(satunnaislukugeneraattori)
+    tiedostonkasittelija = TiedostonKasittelija()
+    avaimenpera = Avaimenpera(tiedostonkasittelija)
+    postilaatikko = Postilaatikko(tiedostonkasittelija)
+    alkulukugeneraattori = AlkulukuGeneraattori(SatunnaislukuGeneraattori())
     avaingeneraattori = AvainGeneraattori(alkulukugeneraattori, avaimenpera)
-    sovellus = UI(io, avaimenpera, avaingeneraattori, salaus_purku)
+    salaus_purku = SalausJaPurku(postilaatikko)
+    sovellus = UI(io, avaimenpera, postilaatikko, avaingeneraattori, salaus_purku)
     sovellus.suorita()
 
 if __name__ == "__main__":
