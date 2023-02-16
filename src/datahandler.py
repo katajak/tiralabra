@@ -28,6 +28,7 @@ class TiedostonKasittelija:
                     for rivi in file:
                         rivi = rivi.replace("\n", "")
                         osat = rivi.split(";")
-                        avain = Avain(str(osat[0]), str(osat[1]), int(osat[2]), int(osat[3]), int(osat[4]))
+                        avain = Avain(str(osat[0]), str(osat[1]),
+                                      int(osat[2]), int(osat[3]), int(osat[4]))
                         avaimet.append(avain)
         return sorted(avaimet, key=operator.attrgetter("nimi"))

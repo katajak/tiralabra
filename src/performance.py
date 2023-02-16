@@ -1,17 +1,17 @@
 import time
+from tempfile import NamedTemporaryFile
 from logic.keygen import AvainGeneraattori
 from logic.primegen import AlkulukuGeneraattori
 from logic.randomgen import SatunnaislukuGeneraattori
 from entities.keychain import Avaimenpera
 from datahandler import TiedostonKasittelija
-from tempfile import NamedTemporaryFile
 
 
 def main():
-    testitiedosto = NamedTemporaryFile(encoding="utf-8", mode="w+")
     print("Kaikissa testeissä lasketaan keskiarvo 20:ltä suorituskerralta.")
     avaingeneraattori = AvainGeneraattori((AlkulukuGeneraattori(SatunnaislukuGeneraattori())),
                                            Avaimenpera(TiedostonKasittelija()))
+    testitiedosto = NamedTemporaryFile(encoding="utf-8", mode="w+")
     ajat = []
     for _ in range(20):
         alku = time.time()
