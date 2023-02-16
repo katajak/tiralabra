@@ -11,6 +11,13 @@ class Avaimenpera:
         self.tiedostonkasittelija.kirjoita_tiedostoon(avain, tiedoston_nimi)
         self.avaimenpera.append(avain)
 
+    def lisaa_avaimet_tiedostoista(self):
+        """Metodi lisää tiedostoissa olevat avaimet avaimenperään.
+        """
+        avaimet = self.tiedostonkasittelija.lue_tiedostot()
+        for avain in avaimet:
+            self.avaimenpera.append(avain)
+
     def avaimet(self):
         """Metodi, joka palauttaa listan avaimista.
         """

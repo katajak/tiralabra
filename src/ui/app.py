@@ -26,6 +26,7 @@ class UI:
         """Metodi, jolla käynnistetään komentorivikäyttöliittymä.
         """
         self.tyhjenna_naytto()
+        self.avaimenpera.lisaa_avaimet_tiedostoista()
         self.io.kirjoita("Tervetuloa ohjelmaan! Mitä haluat tehdä?\n")
         while self.run:
             if self.tyhjenna:
