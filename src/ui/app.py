@@ -35,7 +35,7 @@ class UI:
                 if len(self.viesti_kayttajalle) == 1:
                     self.io.kirjoita(f"{self.viesti_kayttajalle.pop(0)}\n")
                 else:
-                    self.io.kirjoita(f"{self.viesti_kayttajalle.pop(0)}")
+                    self.io.kirjoita(self.viesti_kayttajalle.pop(0))
 
             self.io.kirjoita("1: Generoi avaimet")
             self.io.kirjoita("2: Salaa viesti")
