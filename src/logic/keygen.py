@@ -8,7 +8,7 @@ class AvainGeneraattori:
         self.alkulukugeneraattori = alkulukugeneraattori
         self.avaimenpera = avaimenpera
 
-    def generoi_avaimet(self, bittimaara, nimi):
+    def generoi_avaimet(self, bittimaara, nimi, tiedoston_nimi):
         """Metodi, joka luo avainoliot, ja lisää avaimet avaimenperä-olioon
         Ei varsinaisesti palauta mitään.
         """
@@ -19,8 +19,8 @@ class AvainGeneraattori:
         d = pow(e, -1, l)
         yksityinen_avain = Avain(nimi, "yksityinen", bittimaara, n, d)
         julkinen_avain = Avain(nimi, "julkinen", bittimaara, n, e)
-        self.avaimenpera.lisaa_avain(yksityinen_avain)
-        self.avaimenpera.lisaa_avain(julkinen_avain)
+        self.avaimenpera.lisaa_avain(yksityinen_avain, f"{tiedoston_nimi}.priv")
+        self.avaimenpera.lisaa_avain(julkinen_avain, f"{tiedoston_nimi}.pub")
 
     def syt(self, p, q):
         """Eukleideen algoritmi, joka ratkaisee p ja q suurimman yhteisen tekijän.

@@ -1,12 +1,14 @@
 class Avaimenpera:
     """Luokka, joka säilyttää avaimet listassa.
     """
-    def __init__(self):
+    def __init__(self, tiedostonkasittelija):
         self.avaimenpera = []
+        self.tiedostonkasittelija = tiedostonkasittelija
 
-    def lisaa_avain(self, avain):
-        """Metodi lisää avaimen avaimenperään.
+    def lisaa_avain(self, avain, tiedoston_nimi):
+        """Metodi lisää avaimen avaimenperään ja kirjoittaa avaimen tiedostoon.
         """
+        self.tiedostonkasittelija.kirjoita_tiedostoon(avain, tiedoston_nimi)
         self.avaimenpera.append(avain)
 
     def avaimet(self):
