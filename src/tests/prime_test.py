@@ -1,5 +1,5 @@
 import unittest
-from random import randint
+from secrets import randbelow
 from logic.primegen import AlkulukuGeneraattori
 from logic.randomgen import SatunnaislukuGeneraattori
 
@@ -10,8 +10,8 @@ class StubRandomBits:
     def __init__(self):
         self.inputs = []
 
-    def satunnainen_int_valilla(self, a, b):
-        return randint(a, b)
+    def satunnainen_int_mr(self, n):
+        return 2+randbelow(n-3)
 
     def satunnainen_int_n_bittia(self, n):
         return self.inputs.pop(0)

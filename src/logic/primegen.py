@@ -21,7 +21,7 @@ class AlkulukuGeneraattori:
             t += 1
 
         for _ in range(k):
-            a = self.satunnaislukugeneraattori.satunnainen_int_valilla(2, n-2)
+            a = self.satunnaislukugeneraattori.satunnainen_int_mr(n)
             x = pow(a, s, n)
             if x in (1, n-1):
                 continue
