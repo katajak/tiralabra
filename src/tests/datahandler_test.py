@@ -16,7 +16,7 @@ class TestKeychain(unittest.TestCase):
         with open(f"{gettempdir()}/testi1024.pub", "w", encoding="utf-8") as tiedosto:
             tiedosto.write("asd;julkinen;1024;155302824069287835931228452073974485274966447295390557256488137232285617269050285885610079748411717581562732293757457276021553657214123164594044513833084318571728455601434384083861334019411739007725382157635130316416501591271150733579182063093725285749384453642851848969468073580700567053997744125787772352521;65537")
         self.avaimenpera.lisaa_avaimet_tiedostoista()
-        self.assertEqual(self.avaimenpera.avainten_maara(), 2)
+        self.assertEqual(gettempdir(), 2)
         avaimet = []
         for avain in self.avaimenpera.avaimet():
             avaimet.append(avain)
