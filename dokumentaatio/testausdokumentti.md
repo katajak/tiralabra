@@ -28,9 +28,9 @@ Suorituskykytestaus toteutettiin performance.py tiedostolla, jossa lasketaan ava
 
 ### Tulokset
 
-- 1024 bit: 0.08865889310836791 sekuntia
-- 2048 bit: 0.8492814064025879 sekuntia
-- 4096 bit: 10.42284803390503 sekuntia
+- 1024 bit: 0.09182636737823487 sekuntia
+- 2048 bit: 0.8550775647163391 sekuntia
+- 4096 bit: 8.6403369307518 sekuntia
 
 ### Testien suoritus
 
