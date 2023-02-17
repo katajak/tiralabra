@@ -1,5 +1,6 @@
 import os
 import unittest
+from tempfile import gettempdir
 from repositories.datahandler import TiedostonKasittelija
 from entities.keychain import Avaimenpera
 from entities.inbox import Postilaatikko
@@ -10,9 +11,9 @@ class TestKeychain(unittest.TestCase):
         self.avaimenpera = Avaimenpera(TiedostonKasittelija())
 
     def test_avaimet_tiedostoista(self):
-        with open("/tmp/testi1024.priv", "w", encoding="utf-8") as tiedosto:
+        with open(f"{gettempdir()}/testi1024.priv", "w", encoding="utf-8") as tiedosto:
             tiedosto.write("asd;yksityinen;1024;155302824069287835931228452073974485274966447295390557256488137232285617269050285885610079748411717581562732293757457276021553657214123164594044513833084318571728455601434384083861334019411739007725382157635130316416501591271150733579182063093725285749384453642851848969468073580700567053997744125787772352521;2351265898887889241303674221382310168311115814726944196578419765398529011114364664165107771442622976339667667599564781005593912444576888474915471851404453026705713804856629760272371457146481585724301337795985015427573069674487371274009423441696908683687264583642681811014059452125190720985543948125133740393")
-        with open("/tmp/testi1024.pub", "w", encoding="utf-8") as tiedosto:
+        with open(f"{gettempdir()}/testi1024.pub", "w", encoding="utf-8") as tiedosto:
             tiedosto.write("asd;julkinen;1024;155302824069287835931228452073974485274966447295390557256488137232285617269050285885610079748411717581562732293757457276021553657214123164594044513833084318571728455601434384083861334019411739007725382157635130316416501591271150733579182063093725285749384453642851848969468073580700567053997744125787772352521;65537")
         self.avaimenpera.lisaa_avaimet_tiedostoista()
         self.assertEqual(self.avaimenpera.avainten_maara(), 2)
@@ -21,5 +22,5 @@ class TestKeychain(unittest.TestCase):
             avaimet.append(avain)
         self.assertEqual(str(avaimet[0]), "asd, yksityinen, 1024 bittiä")
         self.assertEqual(str(avaimet[1]), "asd, julkinen, 1024 bittiä")
-        os.remove("/tmp/testi1024.priv")
-        os.remove("/tmp/testi1024.pub")
+        os.remove(f"{gettempdir()}/testi1024.priv")
+        os.remove(f"{gettempdir()}/testi1024.pub")
