@@ -7,9 +7,6 @@ from entities.message import Viesti
 class TiedostonKasittelija:
     """Luokka, joka vastaa tiedostojen kirjoituksesta ja lukemisesta.
     """
-    def __init__(self):
-        pass
-
     def kirjoita_avain_tiedostoon(self, avain, tiedoston_nimi):
         """Metodi kirjoittaa avaimen tiedostoon.
         """
@@ -18,6 +15,8 @@ class TiedostonKasittelija:
             tiedosto.write(data)
 
     def kirjoita_viesti_tiedostoon(self, viesti, tiedoston_nimi):
+        """Metodi kirjoittaa viestin tiedostoon.
+        """
         data = f"{viesti.viesti};{viesti.pituus}"
         with open(tiedoston_nimi, "w", encoding="utf-8") as tiedosto:
             tiedosto.write(data)
@@ -40,6 +39,9 @@ class TiedostonKasittelija:
         return sorted(avaimet, key=operator.attrgetter("nimi"))
 
     def lue_viestit_tiedostoista(self):
+        """Metodi lukee viestit tiedostoista ja tekee niistä viesti-olioita.
+        Palauttaa listan viesti-olioista.
+        """
         viestit = []
         luettavat = ["*.msg"]
         for tiedostomuoto in luettavat:
