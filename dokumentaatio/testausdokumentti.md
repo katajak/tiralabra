@@ -10,7 +10,7 @@ Ajankohtaisimman kattavuusraportin näet [codecovista](https://app.codecov.io/gh
 
 ### Testaus
 
-Ohjelma on testattu automaattisilla yksikkötesteillä ja käsin.
+Ohjelma on testattu automaattisilla yksikkötesteillä ja käsin. Yksikkötestejä on tehty testaamaan yksittäisten metodien lisäksi myös ns. end-to-end testejä viestin salaamisessa ja purkamisessa. Yksikkötesteissä on pyritty käyttämään realistisia syötteitä mutta vanhojen testien päivitys on vielä kesken.
 
 ### Testien suoritus
 
