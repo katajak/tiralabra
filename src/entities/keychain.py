@@ -42,6 +42,7 @@ class Avaimenpera:
 
     def lisaa_avaimet_tiedostoista(self):
         """Metodi lisää tiedostoissa olevat avaimet avaimenperään.
+        Suoritetaan kerran ohjelman käynnistyksen yhteydessä.
         """
         avaimet = self.tiedostonkasittelija.lue_avaimet_tiedostoista()
         for avain in avaimet:

@@ -1,19 +1,28 @@
 class Postilaatikko:
+    """Luokka, joka säilyttää viestit listassa.
+    """
     def __init__(self, tiedostonkasittelija):
         self.postilaatikko = []
         self.tiedostonkasittelija = tiedostonkasittelija
 
     def hae_viesti_nimella(self, nimi):
+        """Metodi, joka hakee postilaatikosta viestin sen tiedostonimen perusteella.
+        """
         for viesti in self.postilaatikko:
             if nimi == viesti.tiedoston_nimi:
                 return viesti
         return None
 
     def lisaa_viesti(self, viesti, tiedoston_nimi):
+        """Metodi lisää viestin postilaatikkoon ja kirjoittaa viestin tiedostoon.
+        """
         self.tiedostonkasittelija.kirjoita_viesti_tiedostoon(viesti, tiedoston_nimi)
         self.postilaatikko.append(viesti)
 
     def lisaa_viestit_tiedostoista(self):
+        """Metodi lisää tiedostoissa olevat viestit postilaatikkoon.
+        Suoritetaan kerran ohjelman käynnistyksen yhteydessä.
+        """
         viestit = self.tiedostonkasittelija.lue_viestit_tiedostoista()
         for viesti in viestit:
             self.postilaatikko.append(viesti)
