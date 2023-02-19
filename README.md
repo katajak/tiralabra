@@ -1,6 +1,6 @@
 # tiralabra
 
-![GHA workflow badge](https://github.com/hartonenolli/ohtu_miniprojekti/workflows/CI/badge.svg)
+![GHA workflow badge](https://github.com/katajak/tiralabra/workflows/CI/badge.svg)
 [![codecov](https://codecov.io/gh/katajak/tiralabra/branch/main/graph/badge.svg?token=RA4XTDM68I)](https://codecov.io/gh/katajak/tiralabra)
 [![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/PyCQA/pylint)
 
