@@ -1,3 +1,4 @@
+import os
 import random
 import string
 import unittest
@@ -18,13 +19,25 @@ class TestEncryptDecrypt(unittest.TestCase):
         self.postilaatikko = Postilaatikko(self.tiedostonkasittelija)
         self.avaingeneraattori = AvainGeneraattori(AlkulukuGeneraattori(SatunnaislukuGeneraattori()), self.avaimenpera)
         self.salaus_purku = SalausJaPurku(self.postilaatikko)
-        self.testitiedosto_1024_yks = NamedTemporaryFile(encoding="utf-8", mode="w+")
-        self.testitiedosto_1024_jul = NamedTemporaryFile(encoding="utf-8", mode="w+")
-        self.testitiedosto_2048_yks = NamedTemporaryFile(encoding="utf-8", mode="w+")
-        self.testitiedosto_2048_jul = NamedTemporaryFile(encoding="utf-8", mode="w+")
-        self.testitiedosto_viesti = NamedTemporaryFile(encoding="utf-8", mode="w+")
+        self.testitiedosto_1024_yks = NamedTemporaryFile(encoding="utf-8", mode="w+", delete=False)
+        self.testitiedosto_1024_jul = NamedTemporaryFile(encoding="utf-8", mode="w+", delete=False)
+        self.testitiedosto_2048_yks = NamedTemporaryFile(encoding="utf-8", mode="w+", delete=False)
+        self.testitiedosto_2048_jul = NamedTemporaryFile(encoding="utf-8", mode="w+", delete=False)
+        self.testitiedosto_viesti = NamedTemporaryFile(encoding="utf-8", mode="w+", delete=False)
         self.avaingeneraattori.generoi_avaimet(1024, "testi1024", self.testitiedosto_1024_yks.name, self.testitiedosto_1024_jul.name)
         self.avaingeneraattori.generoi_avaimet(2048, "testi2048", self.testitiedosto_2048_yks.name, self.testitiedosto_2048_jul.name)
+
+    def tearDown(self):
+        self.testitiedosto_1024_yks.close()
+        self.testitiedosto_1024_jul.close()
+        self.testitiedosto_2048_yks.close()
+        self.testitiedosto_2048_jul.close()
+        self.testitiedosto_viesti.close()
+        os.unlink(self.testitiedosto_1024_yks.name)
+        os.unlink(self.testitiedosto_1024_jul.name)
+        os.unlink(self.testitiedosto_2048_yks.name)
+        os.unlink(self.testitiedosto_2048_jul.name)
+        os.unlink(self.testitiedosto_viesti.name)
 
     def test_encrypt_decrypt(self):
         viesti = "Moi! Tämä on testi. Hui!"
