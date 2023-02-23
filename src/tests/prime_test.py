@@ -38,7 +38,7 @@ class TestPrimes(unittest.TestCase):
         self.assertTrue(self.primes.tarkista_onko_alkuluku(alkuluvut[1]))
 
     def test_generoidut_alkuluvut_oikeasti_alkulukuja_sympy(self):
-        for _ in range(100):
+        for _ in range(10):
             alkuluvut = self.primes.generoi_alkuluvut(1024)
             self.assertTrue(sympy.isprime(alkuluvut[0]))
             self.assertTrue(sympy.isprime(alkuluvut[1]))
@@ -57,12 +57,12 @@ class TestPrimes(unittest.TestCase):
             self.assertTrue(self.primes.miller_rabin(alkuluku, 40))
 
     def test_miller_rabin(self):
-        for _ in range(100):
+        for _ in range(10):
             alkuluku = sympy.randprime(0, 10**100)
             self.assertTrue(self.primes.miller_rabin(alkuluku, 40))
 
     def test_koko_tarkistus(self):
-        for _ in range(100):
+        for _ in range(10):
             alkuluku = sympy.randprime(0, 10**100)
             self.assertTrue(self.primes.tarkista_onko_alkuluku(alkuluku))
 

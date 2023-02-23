@@ -1,3 +1,4 @@
+import math
 import os
 import random
 import string
@@ -79,5 +80,8 @@ class TestEncryptDecrypt(unittest.TestCase):
         self.assertEqual(salattu_viesti, None)
         self.assertEqual("Viestin purkaminen epäonnistui.", purettu_viesti)
 
-    def test_syt(self):
-        self.assertEqual(self.avaingeneraattori.syt(54, 24), 6)
+    def test_suurin_yhteinen_tekija(self):
+        for _ in range(10):
+            p = random.randrange(10**1000)
+            q = random.randrange(10**1000)
+            self.assertEqual(self.avaingeneraattori.syt(p, q), math.gcd(p, q))
