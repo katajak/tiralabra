@@ -1,3 +1,4 @@
+import sympy
 import unittest
 from secrets import randbelow
 from logic.primegen import AlkulukuGeneraattori
@@ -36,18 +37,17 @@ class TestPrimes(unittest.TestCase):
         self.assertTrue(self.primes.tarkista_onko_alkuluku(alkuluvut[0]))
         self.assertTrue(self.primes.tarkista_onko_alkuluku(alkuluvut[1]))
 
+    def test_generoidut_alkuluvut_oikeasti_alkulukuja_sympy(self):
+        for _ in range(100):
+            alkuluvut = self.primes.generoi_alkuluvut(1024)
+            self.assertTrue(sympy.isprime(alkuluvut[0]))
+            self.assertTrue(sympy.isprime(alkuluvut[1]))
+
     def test_eratostheneen_seula(self):
-        alkuluvut = self.primes.generoi_pienet_alkuluvut(29)
-        self.assertEqual(alkuluvut[0], 2)
-        self.assertEqual(alkuluvut[1], 3)
-        self.assertEqual(alkuluvut[2], 5)
-        self.assertEqual(alkuluvut[3], 7)
-        self.assertEqual(alkuluvut[4], 11)
-        self.assertEqual(alkuluvut[5], 13)
-        self.assertEqual(alkuluvut[6], 17)
-        self.assertEqual(alkuluvut[7], 19)
-        self.assertEqual(alkuluvut[8], 23)
-        self.assertEqual(alkuluvut[9], 29)
+        sympy_seula = list(sympy.sieve.primerange(0, 1000))
+        alkuluvut = self.primes.generoi_pienet_alkuluvut(1000)
+        for i in range(len(alkuluvut)):
+            self.assertEqual(alkuluvut[i], sympy_seula[i])
 
     def test_miller_rabin_pienilla_alkuluvuilla(self):
         alkuluvut = self.primes.generoi_pienet_alkuluvut(10**5)
@@ -55,6 +55,16 @@ class TestPrimes(unittest.TestCase):
         alkuluvut.pop(0)
         for alkuluku in alkuluvut:
             self.assertTrue(self.primes.miller_rabin(alkuluku, 40))
+
+    def test_miller_rabin(self):
+        for _ in range(100):
+            alkuluku = sympy.randprime(0, 10**100)
+            self.assertTrue(self.primes.miller_rabin(alkuluku, 40))
+
+    def test_koko_tarkistus(self):
+        for _ in range(100):
+            alkuluku = sympy.randprime(0, 10**100)
+            self.assertTrue(self.primes.tarkista_onko_alkuluku(alkuluku))
 
     def test_esitarkistus_pienilla_alkuluvuilla(self):
         alkuluvut = self.primes.generoi_pienet_alkuluvut(10**5)
