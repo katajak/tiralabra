@@ -1,3 +1,4 @@
+import os
 import time
 from tempfile import NamedTemporaryFile
 from logic.keygen import AvainGeneraattori
@@ -11,8 +12,8 @@ def main():
     print("Kaikissa testeissä lasketaan keskiarvo 20:ltä suorituskerralta.")
     avaingeneraattori = AvainGeneraattori((AlkulukuGeneraattori(SatunnaislukuGeneraattori())),
                                            Avaimenpera(TiedostonKasittelija()))
-    testi1024_yks = NamedTemporaryFile(encoding="utf-8", mode="w+")
-    testi1024_jul = NamedTemporaryFile(encoding="utf-8", mode="w+")
+    testi1024_yks = NamedTemporaryFile(encoding="utf-8", mode="w+", delete=False)
+    testi1024_jul = NamedTemporaryFile(encoding="utf-8", mode="w+", delete=False)
     ajat = []
     for _ in range(20):
         alku = time.time()
@@ -20,9 +21,13 @@ def main():
         loppu = time.time()
         ajat.append(loppu-alku)
     print(f"1024 bit: {sum(ajat)/len(ajat)} sekuntia")
+    testi1024_yks.close()
+    testi1024_jul.close()
+    os.unlink(testi1024_yks.name)
+    os.unlink(testi1024_jul.name)
 
-    testi2048_yks = NamedTemporaryFile(encoding="utf-8", mode="w+")
-    testi2048_jul = NamedTemporaryFile(encoding="utf-8", mode="w+")
+    testi2048_yks = NamedTemporaryFile(encoding="utf-8", mode="w+", delete=False)
+    testi2048_jul = NamedTemporaryFile(encoding="utf-8", mode="w+", delete=False)
     ajat = []
     for _ in range(20):
         alku = time.time()
@@ -30,9 +35,13 @@ def main():
         loppu = time.time()
         ajat.append(loppu-alku)
     print(f"2048 bit: {sum(ajat)/len(ajat)} sekuntia")
+    testi2048_yks.close()
+    testi2048_jul.close()
+    os.unlink(testi2048_yks.name)
+    os.unlink(testi2048_jul.name)
 
-    testi4096_yks = NamedTemporaryFile(encoding="utf-8", mode="w+")
-    testi4096_jul = NamedTemporaryFile(encoding="utf-8", mode="w+")
+    testi4096_yks = NamedTemporaryFile(encoding="utf-8", mode="w+", delete=False)
+    testi4096_jul = NamedTemporaryFile(encoding="utf-8", mode="w+", delete=False)
     ajat = []
     for _ in range(20):
         alku = time.time()
@@ -40,6 +49,10 @@ def main():
         loppu = time.time()
         ajat.append(loppu-alku)
     print(f"4096 bit: {sum(ajat)/len(ajat)} sekuntia")
+    testi4096_yks.close()
+    testi4096_jul.close()
+    os.unlink(testi4096_yks.name)
+    os.unlink(testi4096_jul.name)
 
 if __name__ == "__main__":
     main()
