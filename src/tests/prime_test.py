@@ -44,8 +44,8 @@ class TestPrimes(unittest.TestCase):
             self.assertTrue(sympy.isprime(alkuluvut[1]))
 
     def test_eratostheneen_seula(self):
-        sympy_seula = list(sympy.sieve.primerange(0, 1000))
-        alkuluvut = self.primes.generoi_pienet_alkuluvut(1000)
+        sympy_seula = list(sympy.sieve.primerange(0, 10**5))
+        alkuluvut = self.primes.generoi_pienet_alkuluvut(10**5)
         for i in range(len(alkuluvut)):
             self.assertEqual(alkuluvut[i], sympy_seula[i])
 
