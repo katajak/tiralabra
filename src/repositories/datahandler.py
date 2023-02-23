@@ -17,9 +17,8 @@ class TiedostonKasittelija:
     def kirjoita_viesti_tiedostoon(self, viesti, tiedoston_nimi):
         """Metodi kirjoittaa viestin tiedostoon.
         """
-        data = f"{viesti.viesti};{viesti.pituus}"
         with open(tiedoston_nimi, "w", encoding="utf-8") as tiedosto:
-            tiedosto.write(data)
+            tiedosto.write(str(viesti.viesti))
 
     def lue_avaimet_tiedostoista(self):
         """Metodi lukee avaimet tiedostoista ja tekee niistä avain-olioita.
@@ -63,6 +62,6 @@ class TiedostonKasittelija:
                     for rivi in file:
                         rivi = rivi.replace("\n", "")
                         osat = rivi.split(";")
-                        viesti = Viesti(int(osat[0]), int(osat[1]), str(tiedosto))
+                        viesti = Viesti(int(osat[0]), tiedosto)
                         viestit.append(viesti)
         return sorted(viestit, key=operator.attrgetter("tiedoston_nimi"))
