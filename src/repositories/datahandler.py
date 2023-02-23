@@ -10,7 +10,7 @@ class TiedostonKasittelija:
     def kirjoita_avain_tiedostoon(self, avain, tiedoston_nimi):
         """Metodi kirjoittaa avaimen tiedostoon.
         """
-        data = f"{avain.nimi};{avain.tyyppi};{avain.bittimaara};{avain.modulus};{avain.eksponentti}"
+        data = f"{avain.modulus};{avain.eksponentti}"
         with open(tiedoston_nimi, "w", encoding="utf-8") as tiedosto:
             tiedosto.write(data)
 
@@ -29,12 +29,25 @@ class TiedostonKasittelija:
         luettavat = ["*.priv", "*.pub"]
         for tiedostomuoto in luettavat:
             for tiedosto in glob.glob(tiedostomuoto):
+                if tiedostomuoto == "*.priv":
+                    nimi = tiedosto[:-5]
+                    tyyppi = "yksityinen"
+                else:
+                    nimi = tiedosto[:-4]
+                    tyyppi = "julkinen"
+
                 with open(tiedosto, "r", encoding="utf-8") as file:
                     for rivi in file:
                         rivi = rivi.replace("\n", "")
                         osat = rivi.split(";")
-                        avain = Avain(str(osat[0]), str(osat[1]),
-                                      int(osat[2]), int(osat[3]), int(osat[4]))
+                        if len(bin(int(osat[0]))[2:]) > 4000:
+                            bittimaara = 4096
+                        elif len(bin(int(osat[0]))[2:]) > 2000:
+                            bittimaara = 2048
+                        else:
+                            bittimaara = 1024
+
+                        avain = Avain(nimi, tyyppi, bittimaara, int(osat[0]), int(osat[1]))
                         avaimet.append(avain)
         return sorted(avaimet, key=operator.attrgetter("nimi"))
 
