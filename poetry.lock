@@ -246,6 +246,22 @@ files = [
 ]
 
 [[package]]
+name = "mpmath"
+version = "1.2.1"
+description = "Python library for arbitrary-precision floating-point arithmetic"
+category = "dev"
+optional = false
+python-versions = "*"
+files = [
+    {file = "mpmath-1.2.1-py3-none-any.whl", hash = "sha256:604bc21bd22d2322a177c73bdb573994ef76e62edd595d17e00aff24b0667e5c"},
+    {file = "mpmath-1.2.1.tar.gz", hash = "sha256:79ffb45cf9f4b101a807595bcb3e72e0396202e0b1d25d689134b48c4216a81a"},
+]
+
+[package.extras]
+develop = ["codecov", "pycodestyle", "pytest (>=4.6)", "pytest-cov", "wheel"]
+tests = ["pytest (>=4.6)"]
+
+[[package]]
 name = "packaging"
 version = "23.0"
 description = "Core utilities for Python packages"
@@ -342,6 +358,21 @@ tomli = {version = ">=1.0.0", markers = "python_version < \"3.11\""}
 
 [package.extras]
 testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "pygments (>=2.7.2)", "requests", "xmlschema"]
+
+[[package]]
+name = "sympy"
+version = "1.11.1"
+description = "Computer algebra system (CAS) in Python"
+category = "dev"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "sympy-1.11.1-py3-none-any.whl", hash = "sha256:938f984ee2b1e8eae8a07b884c8b7a1146010040fccddc6539c54f401c8f6fcf"},
+    {file = "sympy-1.11.1.tar.gz", hash = "sha256:e32380dce63cb7c0108ed525570092fd45168bdae2faa17e528221ef72e88658"},
+]
+
+[package.dependencies]
+mpmath = ">=0.19"
 
 [[package]]
 name = "tomli"
@@ -456,4 +487,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "571d38aea57884fa59f3fffe0544c78d30abcba80ac57c493a215424d9724a05"
+content-hash = "38c9dfa99904434db4b6df2386947e51903c0b99ec3acf13ce1f4ea4a6ae8671"
