@@ -34,7 +34,7 @@ class AlkulukuGeneraattori:
                 break
         while True:
             q = self.satunnaislukugeneraattori.satunnainen_int_n_bittia(bittimaara//2)
-            if p == q or p%2 == 0:
+            if p == q or q%2 == 0:
                 continue
             if self.tarkista_onko_alkuluku(q):
                 break
