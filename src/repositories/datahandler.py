@@ -36,18 +36,17 @@ class TiedostonKasittelija:
                     tyyppi = "julkinen"
 
                 with open(tiedosto, "r", encoding="utf-8") as file:
-                    for rivi in file:
-                        rivi = rivi.replace("\n", "")
-                        osat = rivi.split(";")
-                        if len(bin(int(osat[0]))[2:]) > 4000:
-                            bittimaara = 4096
-                        elif len(bin(int(osat[0]))[2:]) > 2000:
-                            bittimaara = 2048
-                        else:
-                            bittimaara = 1024
+                    rivi = file.readline()
+                    osat = rivi.split(";")
+                    if len(bin(int(osat[0]))[2:]) > 4000:
+                        bittimaara = 4096
+                    elif len(bin(int(osat[0]))[2:]) > 2000:
+                        bittimaara = 2048
+                    else:
+                        bittimaara = 1024
 
-                        avain = Avain(nimi, tyyppi, bittimaara, int(osat[0]), int(osat[1]))
-                        avaimet.append(avain)
+                    avain = Avain(nimi, tyyppi, bittimaara, int(osat[0]), int(osat[1]))
+                    avaimet.append(avain)
         return sorted(avaimet, key=operator.attrgetter("nimi"))
 
     def lue_viestit_tiedostoista(self):
@@ -59,9 +58,8 @@ class TiedostonKasittelija:
         for tiedostomuoto in luettavat:
             for tiedosto in glob.glob(tiedostomuoto):
                 with open(tiedosto, "r", encoding="utf-8") as file:
-                    for rivi in file:
-                        rivi = rivi.replace("\n", "")
-                        osat = rivi.split(";")
-                        viesti = Viesti(int(osat[0]), tiedosto)
+                        rivi = file.readline()
+
+                        viesti = Viesti(int(rivi), tiedosto)
                         viestit.append(viesti)
         return sorted(viestit, key=operator.attrgetter("tiedoston_nimi"))

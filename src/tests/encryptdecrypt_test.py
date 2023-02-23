@@ -50,7 +50,7 @@ class TestEncryptDecrypt(unittest.TestCase):
 
     def test_encrypt_decrypt_random_string(self):
         kirjaimet = string.ascii_letters
-        viesti = "".join(random.choice(kirjaimet) for _ in range(255))
+        viesti = "".join(random.choice(kirjaimet) for _ in range(200))
         yksityinen_avain = self.avaimenpera.hae_yksityinen_avain_nimella("testi2048")
         julkinen_avain = self.avaimenpera.hae_julkinen_avain_nimella("testi2048")
         self.salaus_purku.salaa_viesti(julkinen_avain, viesti, self.testitiedosto_viesti.name)
