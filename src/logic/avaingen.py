@@ -1,4 +1,4 @@
-from entities.key import Avain
+from entities.avain import Avain
 
 
 class AvainGeneraattori:

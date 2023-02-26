@@ -1,4 +1,4 @@
-from entities.message import Viesti
+from entities.viesti import Viesti
 
 
 class SalausJaPurku:

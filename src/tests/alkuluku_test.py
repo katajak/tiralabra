@@ -1,8 +1,8 @@
 import sympy
 import unittest
 from secrets import randbelow
-from logic.primegen import AlkulukuGeneraattori
-from logic.randomgen import SatunnaislukuGeneraattori
+from logic.alkulukugen import AlkulukuGeneraattori
+from logic.satunnaisgen import SatunnaislukuGeneraattori
 
 # Miller-Rabinissa käytetään 40 iteraatiota
 # https://stackoverflow.com/questions/6325576/how-many-iterations-of-rabin-miller-should-i-use-for-cryptographic-safe-primes

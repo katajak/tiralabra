@@ -1,9 +1,9 @@
 import os
 import unittest
 from tempfile import gettempdir
-from repositories.datahandler import TiedostonKasittelija
-from entities.keychain import Avaimenpera
-from entities.inbox import Postilaatikko
+from repositories.tiedostonkasittelija import TiedostonKasittelija
+from entities.avaimenpera import Avaimenpera
+from entities.postilaatikko import Postilaatikko
 
 
 class TestKeychain(unittest.TestCase):

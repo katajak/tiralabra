@@ -1,12 +1,12 @@
-from ui.readerwriter import IO
-from ui.app import UI
-from logic.primegen import AlkulukuGeneraattori
-from logic.keygen import AvainGeneraattori
-from logic.randomgen import SatunnaislukuGeneraattori
-from logic.encryptdecrypt import SalausJaPurku
-from entities.keychain import Avaimenpera
-from entities.inbox import Postilaatikko
-from repositories.datahandler import TiedostonKasittelija
+from ui.io import IO
+from ui.sovellus import UI
+from logic.alkulukugen import AlkulukuGeneraattori
+from logic.avaingen import AvainGeneraattori
+from logic.satunnaisgen import SatunnaislukuGeneraattori
+from logic.salauspurku import SalausJaPurku
+from entities.avaimenpera import Avaimenpera
+from entities.postilaatikko import Postilaatikko
+from repositories.tiedostonkasittelija import TiedostonKasittelija
 
 
 def main():

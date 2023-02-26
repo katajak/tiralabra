@@ -1,7 +1,7 @@
 import glob
 import operator
-from entities.key import Avain
-from entities.message import Viesti
+from entities.avain import Avain
+from entities.viesti import Viesti
 
 
 class TiedostonKasittelija:

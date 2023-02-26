@@ -1,11 +1,11 @@
 import os
 import time
 from tempfile import NamedTemporaryFile
-from logic.keygen import AvainGeneraattori
-from logic.primegen import AlkulukuGeneraattori
-from logic.randomgen import SatunnaislukuGeneraattori
-from entities.keychain import Avaimenpera
-from repositories.datahandler import TiedostonKasittelija
+from logic.avaingen import AvainGeneraattori
+from logic.alkulukugen import AlkulukuGeneraattori
+from logic.satunnaisgen import SatunnaislukuGeneraattori
+from entities.avaimenpera import Avaimenpera
+from repositories.tiedostonkasittelija import TiedostonKasittelija
 
 
 def main():

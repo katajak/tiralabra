@@ -1,9 +1,9 @@
 import os
 import unittest
 from tempfile import NamedTemporaryFile
-from entities.keychain import Avaimenpera
-from entities.key import Avain
-from repositories.datahandler import TiedostonKasittelija
+from entities.avaimenpera import Avaimenpera
+from entities.avain import Avain
+from repositories.tiedostonkasittelija import TiedostonKasittelija
 
 
 class TestKeychain(unittest.TestCase):
