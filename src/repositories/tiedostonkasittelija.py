@@ -58,8 +58,8 @@ class TiedostonKasittelija:
         for tiedostomuoto in luettavat:
             for tiedosto in glob.glob(tiedostomuoto):
                 with open(tiedosto, "r", encoding="utf-8") as file:
-                        rivi = file.readline()
+                    rivi = file.readline()
 
-                        viesti = Viesti(int(rivi), tiedosto)
-                        viestit.append(viesti)
+                    viesti = Viesti(int(rivi), tiedosto)
+                    viestit.append(viesti)
         return sorted(viestit, key=operator.attrgetter("tiedoston_nimi"))

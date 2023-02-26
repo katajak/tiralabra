@@ -69,13 +69,16 @@ class UI:
                 self.io.kirjoita("Generoidaan avaimia...")
                 if syote == "1":
                     koko = 1024
-                    self.avaingeneraattori.generoi_avaimet(koko, nimi, tiedoston_nimi_yksityinen, tiedoston_nimi_julkinen)
+                    self.avaingeneraattori.generoi_avaimet(koko, nimi, tiedoston_nimi_yksityinen,
+                                                           tiedoston_nimi_julkinen)
                 elif syote == "2":
                     koko = 2048
-                    self.avaingeneraattori.generoi_avaimet(koko, nimi, tiedoston_nimi_yksityinen, tiedoston_nimi_julkinen)
+                    self.avaingeneraattori.generoi_avaimet(koko, nimi, tiedoston_nimi_yksityinen,
+                                                           tiedoston_nimi_julkinen)
                 elif syote == "3":
                     koko = 4096
-                    self.avaingeneraattori.generoi_avaimet(koko, nimi, tiedoston_nimi_yksityinen, tiedoston_nimi_julkinen)
+                    self.avaingeneraattori.generoi_avaimet(koko, nimi, tiedoston_nimi_yksityinen,
+                                                           tiedoston_nimi_julkinen)
                 self.tyhjenna = True
                 self.viesti_kayttajalle.append("Avaimet generoitu onnistuneesti.")
 
