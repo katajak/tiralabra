@@ -20,4 +20,4 @@ Ei mitään.
 
 ## Mitä teen seuraavaksi?
 
-En taida enää tehdä mitään uusia ominaisuuksia ohjelmaan. Aion vain parantaa olemassa olevaa.
+En taida enää tehdä mitään uusia ominaisuuksia ohjelmaan. Aion vain parantaa olemassa olevaa. Pitää vielä myös kirjoittaa asennus/käyttöohje.
