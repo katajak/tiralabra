@@ -10,7 +10,7 @@ class SalausJaPurku:
     def salaa_viesti(self, julkinen_avain, viesti, tiedoston_nimi):
         """Metodi, joka vastaa viestin salaamisesta.
         Viesti muunnetaan kokonaisluvuksi, ennen kuin se voidaan salata.
-        Lisää postilaatikko-olioon viesi-olion ja kirjoittaa viesin tiedostoon.
+        Lisää postilaatikko-olioon viesti-olion ja kirjoittaa viesin tiedostoon.
         """
         viesti_olio = Viesti(pow(int.from_bytes(viesti.encode(), "big"), julkinen_avain.eksponentti,
                                  julkinen_avain.modulus), tiedoston_nimi)
