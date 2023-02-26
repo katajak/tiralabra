@@ -64,6 +64,7 @@ class UI:
                     continue
                 tiedoston_nimi_yksityinen = nimi + ".priv"
                 tiedoston_nimi_julkinen = nimi + ".pub"
+
                 self.tyhjenna_naytto()
                 self.io.kirjoita("Generoidaan avaimia...")
                 if syote == "1":
@@ -121,8 +122,11 @@ class UI:
                     tiedosto = tiedosto + ".msg"
                     salattu_viesti = self.postilaatikko.hae_viesti_nimella(tiedosto)
                     purettu_viesti = self.salaus_purku.pura_salaus(yksityinen_avain, salattu_viesti)
+
+                    self.tyhjenna_naytto()
+                    self.io.kirjoita(purettu_viesti)
+                    self.io.lue("\nPaina Enter jatkaaksesi")
                     self.tyhjenna = True
-                    self.viesti_kayttajalle.append(purettu_viesti)
                 else:
                     self.viesti_kayttajalle.append("Yksityisiä avaimia ei löytynyt.")
 
