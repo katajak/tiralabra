@@ -40,12 +40,12 @@ class UI:
                 else:
                     self.io.kirjoita(self.viesti_kayttajalle.pop(0))
 
-            syote = self.io.lue_lista("valinta", "Valinta", ["Generoi avaimet", "Salaa viesti", "Pura salattu viesti",
-                                                             "Listaa avaimet", "Listaa viestit", "Lopeta ohjelma"])
+            syote = self.io.lue_lista("Valinta", ["Generoi avaimet", "Salaa viesti", "Pura salattu viesti",
+                                                  "Listaa avaimet", "Listaa viestit", "Lopeta ohjelma"])
 
             self.tyhjenna_naytto()
             if syote == "Generoi avaimet":
-                tyyppi = self.io.lue_lista("tyyppi", "Avaimen tyyppi", ["RSA 1024-bittiä", "RSA 2048-bittiä", "RSA 4096-bittiä"])
+                tyyppi = self.io.lue_lista("Avaimen tyyppi", ["RSA 1024-bittiä", "RSA 2048-bittiä", "RSA 4096-bittiä"])
 
                 nimi = self.io.lue("Anna nimi avaimille: ")
                 if len(nimi) == 0:
@@ -74,7 +74,7 @@ class UI:
 
             elif syote == "Salaa viesti":
                 if self.avaimenpera.avainten_maara() > 0:
-                    julkinen_avain = self.io.lue_lista("nimi", "Käytettävä avain", self.avaimenpera.julkiset_avaimet())
+                    julkinen_avain = self.io.lue_lista("Käytettävä avain", self.avaimenpera.julkiset_avaimet())
 
                     tiedosto = self.io.lue("Anna viestin tiedoston nimi: ")
                     tiedosto = tiedosto + ".msg"
@@ -102,10 +102,10 @@ class UI:
                         self.viesti_kayttajalle.append("Viestejä ei löytynyt.")
                         continue
 
-                    yksityinen_avain = self.io.lue_lista("nimi", "Käytettävä avain", self.avaimenpera.yksityiset_avaimet())
+                    yksityinen_avain = self.io.lue_lista("Käytettävä avain", self.avaimenpera.yksityiset_avaimet())
 
                     self.tyhjenna_naytto()
-                    salattu_viesti = self.io.lue_lista("nimi", "Purettava viesti", self.postilaatikko.viestit())
+                    salattu_viesti = self.io.lue_lista("Purettava viesti", self.postilaatikko.viestit())
                     purettu_viesti = self.salaus_purku.pura_salaus(yksityinen_avain, salattu_viesti)
 
                     self.tyhjenna_naytto()

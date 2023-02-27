@@ -3,7 +3,8 @@ from inquirer.themes import load_theme_from_dict
 
 
 class IO:
-    """Luokka, joka toimii kuten print ja input.
+    """Luokka, joka on vastuussa käyttäjän syötteiden lukemisesta
+       ja näytölle kirjoittamisesta.
     """
     def lue(self, syote):
         return input(syote)
@@ -11,7 +12,8 @@ class IO:
     def kirjoita(self, syote):
         print(syote)
 
-    def lue_lista(self, nimi, viesti, valinnat):
+    def lue_lista(self, viesti, valinnat):
+        nimi = "syote"
         questions = [
             inquirer.List(
                 nimi,
