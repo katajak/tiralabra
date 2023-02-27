@@ -49,7 +49,7 @@ class UI:
                 tyyppi = self.io.lue_lista("Avaimen tyyppi",["RSA 1024-bittiä", "RSA 2048-bittiä",
                                                              "RSA 4096-bittiä"])
 
-                nimi = self.io.lue("Anna nimi avaimille: ")
+                nimi = self.io.lue_lyhyt("Anna nimi avaimille")
                 if len(nimi) == 0:
                     self.tyhjenna = True
                     self.viesti_kayttajalle.append("Toiminto peruutettu.")
@@ -79,7 +79,7 @@ class UI:
                     julkinen_avain = self.io.lue_lista("Käytettävä avain",
                                                        self.avaimenpera.julkiset_avaimet())
 
-                    tiedosto = self.io.lue("Anna viestin tiedoston nimi: ")
+                    tiedosto = self.io.lue_lyhyt("Anna viestin tiedoston nimi")
                     if len(tiedosto) == 0:
                         self.tyhjenna = True
                         self.viesti_kayttajalle.append("Toiminto peruutettu.")

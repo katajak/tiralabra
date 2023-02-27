@@ -12,6 +12,13 @@ class IO:
     def lue(self, syote):
         return input(syote)
 
+    def lue_lyhyt(self, syote):
+        nimi = "syote"
+        kysymys = inquirer.Text(nimi, message=syote),
+
+        vastaus = inquirer.prompt(kysymys)
+        return vastaus[nimi]
+
     def lue_lista(self, viesti, valinnat):
         nimi = "syote"
         kysymys = [
@@ -19,6 +26,7 @@ class IO:
                 nimi,
                 message=viesti,
                 choices=valinnat,
+                carousel=True,
             ),
         ]
 
