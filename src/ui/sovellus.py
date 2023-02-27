@@ -61,16 +61,12 @@ class UI:
                 self.io.kirjoita("Generoidaan avaimia...")
                 if tyyppi == "RSA 1024-bittiä":
                     koko = 1024
-                    self.avaingeneraattori.generoi_avaimet(koko, nimi, tiedoston_nimi_yksityinen,
-                                                           tiedoston_nimi_julkinen)
                 elif tyyppi == "RSA 2048-bittiä":
                     koko = 2048
-                    self.avaingeneraattori.generoi_avaimet(koko, nimi, tiedoston_nimi_yksityinen,
-                                                           tiedoston_nimi_julkinen)
                 elif tyyppi == "RSA 4096-bittiä":
                     koko = 4096
-                    self.avaingeneraattori.generoi_avaimet(koko, nimi, tiedoston_nimi_yksityinen,
-                                                           tiedoston_nimi_julkinen)
+                self.avaingeneraattori.generoi_avaimet(koko, nimi, tiedoston_nimi_yksityinen,
+                                                       tiedoston_nimi_julkinen)
                 self.tyhjenna = True
                 self.viesti_kayttajalle.append("Avaimet generoitu onnistuneesti.")
 
