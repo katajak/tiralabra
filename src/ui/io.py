@@ -14,7 +14,7 @@ class IO:
 
     def lue_lista(self, viesti, valinnat):
         nimi = "syote"
-        questions = [
+        kysymys = [
             inquirer.List(
                 nimi,
                 message=viesti,
@@ -29,5 +29,5 @@ class IO:
             }
         }
 
-        prompt = inquirer.prompt(questions, theme=load_theme_from_dict(teema))
-        return prompt[nimi]
+        vastaus = inquirer.prompt(kysymys, theme=load_theme_from_dict(teema))
+        return vastaus[nimi]
