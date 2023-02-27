@@ -40,16 +40,11 @@ class UI:
                 else:
                     self.io.kirjoita(self.viesti_kayttajalle.pop(0))
 
-            self.io.kirjoita("1: Generoi avaimet")
-            self.io.kirjoita("2: Salaa viesti")
-            self.io.kirjoita("3: Pura salattu viesti")
-            self.io.kirjoita("4: Listaa avaimet")
-            self.io.kirjoita("5: Listaa viestit")
-            self.io.kirjoita("q: Lopeta ohjelma")
-            syote = self.io.lue("\nValinta: ")
+            syote = self.io.lue_lista("valinta", "Valinta", ["Generoi avaimet", "Salaa viesti", "Pura salattu viesti",
+                                                             "Listaa avaimet", "Listaa viestit", "Lopeta ohjelma"])
 
             self.tyhjenna_naytto()
-            if syote == "1":
+            if syote["valinta"] == "Generoi avaimet":
                 self.io.kirjoita("Valitse avaimen tyyppi")
                 self.io.kirjoita("\n1: RSA 1024-bittiä")
                 self.io.kirjoita("2: RSA 2048-bittiä")
@@ -82,7 +77,7 @@ class UI:
                 self.tyhjenna = True
                 self.viesti_kayttajalle.append("Avaimet generoitu onnistuneesti.")
 
-            elif syote == "2":
+            elif syote["valinta"] == "Salaa viesti":
                 if self.avaimenpera.avainten_maara() > 0:
                     self.io.kirjoita("Julkiset avaimet:\n")
                     for avaimet in self.avaimenpera.julkiset_avaimet():
@@ -107,7 +102,7 @@ class UI:
                 else:
                     self.viesti_kayttajalle.append("Julkisia avaimia ei löytynyt.")
 
-            elif syote == "3":
+            elif syote["valinta"] == "Pura salattu viesti":
                 if self.avaimenpera.avainten_maara() > 0:
                     self.io.kirjoita("Yksityiset avaimet:\n")
                     for avaimet in self.avaimenpera.yksityiset_avaimet():
@@ -133,19 +128,19 @@ class UI:
                 else:
                     self.viesti_kayttajalle.append("Yksityisiä avaimia ei löytynyt.")
 
-            elif syote == "4":
+            elif syote["valinta"] == "Listaa avaimet":
                 if self.avaimenpera.avainten_maara() > 0:
                     for avaimet in self.avaimenpera.avaimet():
                         self.viesti_kayttajalle.append(avaimet)
                 else:
                     self.viesti_kayttajalle.append("Avaimia ei löytynyt.")
 
-            elif syote == "5":
+            elif syote["valinta"] == "Listaa viestit":
                 if self.postilaatikko.viestien_maara() > 0:
                     for viesti in self.postilaatikko.viestit():
                         self.viesti_kayttajalle.append(viesti.tiedoston_nimi)
                 else:
                     self.viesti_kayttajalle.append("Viestejä ei löytynyt.")
 
-            elif syote == "q":
+            elif syote["valinta"] == "Lopeta ohjelma":
                 self.run = False
