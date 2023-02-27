@@ -15,22 +15,6 @@ class Avaimenpera:
         """
         return len(self.avaimenpera)
 
-    def hae_julkinen_avain_nimella(self, nimi):
-        """Metodi, joka hakee avaimenperästä julkisen avaimen sen nimen perusteella.
-        """
-        for avain in self.avaimenpera:
-            if nimi == avain.nimi and avain.tyyppi == "julkinen":
-                return avain
-        return None
-
-    def hae_yksityinen_avain_nimella(self, nimi):
-        """Metodi, joka hakee avaimenperästä yksityisen avaimen sen nimen perusteella.
-        """
-        for avain in self.avaimenpera:
-            if nimi == avain.nimi and avain.tyyppi == "yksityinen":
-                return avain
-        return None
-
     def julkiset_avaimet(self):
         """Metodi, joka palauttaa listan julkisista avaimista.
         """

@@ -44,81 +44,68 @@ class UI:
                                                              "Listaa avaimet", "Listaa viestit", "Lopeta ohjelma"])
 
             self.tyhjenna_naytto()
-            if syote["valinta"] == "Generoi avaimet":
-                self.io.kirjoita("Valitse avaimen tyyppi")
-                self.io.kirjoita("\n1: RSA 1024-bittiä")
-                self.io.kirjoita("2: RSA 2048-bittiä")
-                self.io.kirjoita("3: RSA 4096-bittiä")
-                syote = self.io.lue("\nValinta: ")
-                if len(syote) == 0:
-                    self.tyhjenna = True
-                    continue
-                nimi = self.io.lue("\nAnna nimi avaimille: ")
+            if syote == "Generoi avaimet":
+                tyyppi = self.io.lue_lista("tyyppi", "Avaimen tyyppi", ["RSA 1024-bittiä", "RSA 2048-bittiä", "RSA 4096-bittiä"])
+
+                nimi = self.io.lue("Anna nimi avaimille: ")
                 if len(nimi) == 0:
                     self.tyhjenna = True
+                    self.viesti_kayttajalle.append("Toiminto peruutettu.")
                     continue
                 tiedoston_nimi_yksityinen = nimi + ".priv"
                 tiedoston_nimi_julkinen = nimi + ".pub"
 
                 self.tyhjenna_naytto()
                 self.io.kirjoita("Generoidaan avaimia...")
-                if syote == "1":
+                if tyyppi == "RSA 1024-bittiä":
                     koko = 1024
                     self.avaingeneraattori.generoi_avaimet(koko, nimi, tiedoston_nimi_yksityinen,
                                                            tiedoston_nimi_julkinen)
-                elif syote == "2":
+                elif tyyppi == "RSA 2048-bittiä":
                     koko = 2048
                     self.avaingeneraattori.generoi_avaimet(koko, nimi, tiedoston_nimi_yksityinen,
                                                            tiedoston_nimi_julkinen)
-                elif syote == "3":
+                elif tyyppi == "RSA 4096-bittiä":
                     koko = 4096
                     self.avaingeneraattori.generoi_avaimet(koko, nimi, tiedoston_nimi_yksityinen,
                                                            tiedoston_nimi_julkinen)
                 self.tyhjenna = True
                 self.viesti_kayttajalle.append("Avaimet generoitu onnistuneesti.")
 
-            elif syote["valinta"] == "Salaa viesti":
+            elif syote == "Salaa viesti":
                 if self.avaimenpera.avainten_maara() > 0:
-                    self.io.kirjoita("Julkiset avaimet:\n")
-                    for avaimet in self.avaimenpera.julkiset_avaimet():
-                        self.io.kirjoita(avaimet)
-                    nimi = self.io.lue("\nAnna käytettävän avaimen nimi: ")
-                    if len(nimi) == 0:
-                        self.tyhjenna = True
-                        continue
-                    julkinen_avain = self.avaimenpera.hae_julkinen_avain_nimella(nimi)
-                    tiedosto = self.io.lue("\nAnna viestin tiedoston nimi: ")
+                    julkinen_avain = self.io.lue_lista("nimi", "Käytettävä avain", self.avaimenpera.julkiset_avaimet())
+
+                    tiedosto = self.io.lue("Anna viestin tiedoston nimi: ")
                     tiedosto = tiedosto + ".msg"
-                    if len(tiedosto) == 0:
+                    if len(tiedosto)-4 == 0:
                         self.tyhjenna = True
+                        self.viesti_kayttajalle.append("Toiminto peruutettu.")
                         continue
+
                     syote = self.io.lue("\nKirjoita viesti:\n\n")
                     if len(syote) == 0:
                         self.tyhjenna = True
+                        self.viesti_kayttajalle.append("Toiminto peruutettu.")
                         continue
+
                     self.salaus_purku.salaa_viesti(julkinen_avain, syote, tiedosto)
                     self.tyhjenna = True
                     self.viesti_kayttajalle.append("Viesti salattu onnistuneesti.")
                 else:
                     self.viesti_kayttajalle.append("Julkisia avaimia ei löytynyt.")
 
-            elif syote["valinta"] == "Pura salattu viesti":
+            elif syote == "Pura salattu viesti":
                 if self.avaimenpera.avainten_maara() > 0:
-                    self.io.kirjoita("Yksityiset avaimet:\n")
-                    for avaimet in self.avaimenpera.yksityiset_avaimet():
-                        self.io.kirjoita(avaimet)
-                    nimi = self.io.lue("\nAnna käytettävän avaimen nimi: ")
-                    if len(nimi) == 0:
+                    if self.postilaatikko.viestien_maara() == 0:
                         self.tyhjenna = True
+                        self.viesti_kayttajalle.append("Viestejä ei löytynyt.")
                         continue
-                    yksityinen_avain = self.avaimenpera.hae_yksityinen_avain_nimella(nimi)
+
+                    yksityinen_avain = self.io.lue_lista("nimi", "Käytettävä avain", self.avaimenpera.yksityiset_avaimet())
+
                     self.tyhjenna_naytto()
-                    self.io.kirjoita("Tiedostot:\n")
-                    for viesti in self.postilaatikko.viestit():
-                        self.io.kirjoita(viesti.tiedoston_nimi[:-4])
-                    tiedosto = self.io.lue("\nAnna viestin tiedoston nimi: ")
-                    tiedosto = tiedosto + ".msg"
-                    salattu_viesti = self.postilaatikko.hae_viesti_nimella(tiedosto)
+                    salattu_viesti = self.io.lue_lista("nimi", "Purettava viesti", self.postilaatikko.viestit())
                     purettu_viesti = self.salaus_purku.pura_salaus(yksityinen_avain, salattu_viesti)
 
                     self.tyhjenna_naytto()
@@ -128,19 +115,19 @@ class UI:
                 else:
                     self.viesti_kayttajalle.append("Yksityisiä avaimia ei löytynyt.")
 
-            elif syote["valinta"] == "Listaa avaimet":
+            elif syote == "Listaa avaimet":
                 if self.avaimenpera.avainten_maara() > 0:
-                    for avaimet in self.avaimenpera.avaimet():
-                        self.viesti_kayttajalle.append(avaimet)
+                    for avain in self.avaimenpera.avaimet():
+                        self.viesti_kayttajalle.append(avain)
                 else:
                     self.viesti_kayttajalle.append("Avaimia ei löytynyt.")
 
-            elif syote["valinta"] == "Listaa viestit":
+            elif syote == "Listaa viestit":
                 if self.postilaatikko.viestien_maara() > 0:
                     for viesti in self.postilaatikko.viestit():
-                        self.viesti_kayttajalle.append(viesti.tiedoston_nimi)
+                        self.viesti_kayttajalle.append(viesti)
                 else:
                     self.viesti_kayttajalle.append("Viestejä ei löytynyt.")
 
-            elif syote["valinta"] == "Lopeta ohjelma":
+            elif syote == "Lopeta ohjelma":
                 self.run = False

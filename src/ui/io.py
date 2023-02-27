@@ -1,5 +1,5 @@
 import inquirer
-from inquirer.themes import GreenPassion
+from inquirer.themes import load_theme_from_dict
 
 
 class IO:
@@ -20,4 +20,12 @@ class IO:
             ),
         ]
 
-        return inquirer.prompt(questions, theme=GreenPassion())
+        teema = {
+            "List": {
+                "selection_color": "gold",
+                "selection_cursor": "->"
+            }
+        }
+
+        prompt = inquirer.prompt(questions, theme=load_theme_from_dict(teema))
+        return prompt[nimi]

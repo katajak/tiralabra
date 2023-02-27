@@ -5,14 +5,6 @@ class Postilaatikko:
         self.postilaatikko = []
         self.tiedostonkasittelija = tiedostonkasittelija
 
-    def hae_viesti_nimella(self, nimi):
-        """Metodi, joka hakee postilaatikosta viestin sen tiedostonimen perusteella.
-        """
-        for viesti in self.postilaatikko:
-            if nimi == viesti.tiedoston_nimi:
-                return viesti
-        return None
-
     def lisaa_viesti(self, viesti, tiedoston_nimi):
         """Metodi lisää viestin postilaatikkoon ja kirjoittaa viestin tiedostoon.
         """
