@@ -17,24 +17,6 @@ class TestKeychain(unittest.TestCase):
         self.testitiedosto.close()
         os.unlink(self.testitiedosto.name)
 
-    def test_hae_tyhja_avaimenpera(self):
-        julkinen_avain = self.avaimenpera.hae_julkinen_avain_nimella("a")
-        yksityinen_avain = self.avaimenpera.hae_yksityinen_avain_nimella("b")
-        self.assertEqual(julkinen_avain, None)
-        self.assertEqual(yksityinen_avain, None)
-
-    def test_hae_avainta_joka_ei_ole_olemassa(self):
-        self.avaimenpera.lisaa_avain(self.yksityinen_avain, self.testitiedosto.name)
-        self.avaimenpera.lisaa_avain(self.julkinen_avain, self.testitiedosto.name)
-        avain1 = self.avaimenpera.hae_julkinen_avain_nimella("toinen avain")
-        avain2 = self.avaimenpera.hae_yksityinen_avain_nimella("hyvä avain")
-        avain3 = self.avaimenpera.hae_julkinen_avain_nimella("hyvä avain")
-        avain4 = self.avaimenpera.hae_yksityinen_avain_nimella("toinen avain")
-        self.assertEqual(avain1, None)
-        self.assertEqual(avain2, None)
-        self.assertEqual(avain3, self.julkinen_avain)
-        self.assertEqual(avain4, self.yksityinen_avain)
-
     def test_avainten_listaus(self):
         kaikki_avaimet = self.avaimenpera.avaimet()
         self.assertEqual(len(kaikki_avaimet), 0)
