@@ -1,3 +1,4 @@
+from datetime import datetime
 from entities.viesti import Viesti
 
 
@@ -13,7 +14,8 @@ class SalausJaPurku:
         Lisää postilaatikko-olioon viesti-olion ja kirjoittaa viesin tiedostoon.
         """
         viesti_olio = Viesti(pow(int.from_bytes(viesti.encode(), "big"), julkinen_avain.eksponentti,
-                                 julkinen_avain.modulus), tiedoston_nimi)
+                                 julkinen_avain.modulus), tiedoston_nimi,
+                                 datetime.now().isoformat(sep=" ", timespec="seconds"))
         self.postilaatikko.lisaa_viesti(viesti_olio, tiedoston_nimi)
 
     def pura_salaus(self, yksityinen_avain, viesti):

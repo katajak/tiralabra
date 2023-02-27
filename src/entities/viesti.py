@@ -1,7 +1,8 @@
 class Viesti:
-    def __init__(self, viesti, tiedoston_nimi):
+    def __init__(self, viesti, tiedoston_nimi, muokkausaika):
         self.viesti = viesti
         self.tiedoston_nimi = tiedoston_nimi
+        self.muokkausaika = muokkausaika
 
     def __str__(self):
-        return self.tiedoston_nimi
+        return f"{self.tiedoston_nimi}, kirjoitettu {self.muokkausaika}"

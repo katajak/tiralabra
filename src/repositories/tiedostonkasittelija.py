@@ -1,5 +1,7 @@
-import glob
 import operator
+import os
+import glob
+from datetime import datetime
 from entities.avain import Avain
 from entities.viesti import Viesti
 
@@ -59,7 +61,8 @@ class TiedostonKasittelija:
             for tiedosto in glob.glob(tiedostomuoto):
                 with open(tiedosto, "r", encoding="utf-8") as file:
                     rivi = file.readline()
-
-                    viesti = Viesti(int(rivi), tiedosto)
+                    muokkausaika = (datetime.fromtimestamp(os.path.getmtime(tiedosto))
+                                    .isoformat(sep=" ", timespec="seconds"))
+                    viesti = Viesti(int(rivi), tiedosto, muokkausaika)
                     viestit.append(viesti)
         return sorted(viestit, key=operator.attrgetter("tiedoston_nimi"))
