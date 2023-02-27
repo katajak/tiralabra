@@ -6,11 +6,11 @@ class IO:
     """Luokka, joka on vastuussa käyttäjän syötteiden lukemisesta
        ja näytölle kirjoittamisesta.
     """
-    def lue(self, syote):
-        return input(syote)
-
     def kirjoita(self, syote):
         print(syote)
+
+    def lue(self, syote):
+        return input(syote)
 
     def lue_lista(self, viesti, valinnat):
         nimi = "syote"
