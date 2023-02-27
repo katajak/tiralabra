@@ -85,8 +85,7 @@ class UI:
                         if len(tiedosto) == 0:
                             self.viesti_kayttajalle.append("Toiminto peruutettu.")
                         else:
-                            self.viesti_kayttajalle.append("""Tiedosto on jo olemassa,
-                                                              valitse toinen nimi.""")
+                            self.viesti_kayttajalle.append("Tiedosto on jo olemassa, valitse toinen nimi.")
                         continue
                     tiedosto = tiedosto + ".msg"
 
