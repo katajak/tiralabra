@@ -25,7 +25,7 @@ class SalausJaPurku:
         Palauttaa alkuperäisen viestin merkkijonona.
         """
         purettu_viesti_int = pow(viesti.viesti, yksityinen_avain.eksponentti,
-                                    yksityinen_avain.modulus)
+                                 yksityinen_avain.modulus)
         pituus = purettu_viesti_int.bit_length()//8+1
         return pow(viesti.viesti, yksityinen_avain.eksponentti,
-                    yksityinen_avain.modulus).to_bytes(pituus, "big").decode()
+                   yksityinen_avain.modulus).to_bytes(pituus, "big").decode()
