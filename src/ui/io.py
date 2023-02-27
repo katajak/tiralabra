@@ -32,7 +32,7 @@ class IO:
 
         teema = {
             "List": {
-                "selection_color": "gold",
+                "selection_color": "bright_yellow",
                 "selection_cursor": "->"
             }
         }
