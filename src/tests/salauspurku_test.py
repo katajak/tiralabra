@@ -66,8 +66,11 @@ class TestEncryptDecrypt(unittest.TestCase):
         julkinen_avain = self.avaimenpera.avaimet()[3]
         self.salaus_purku.salaa_viesti(julkinen_avain, viesti, self.testitiedosto_viesti.name)
         salattu_viesti = self.postilaatikko.viestit()[0]
-        purettu_viesti = self.salaus_purku.pura_salaus(yksityinen_avain, salattu_viesti)
-        self.assertEqual("Viestin purkaminen epäonnistui.", purettu_viesti)
+        try:
+            purettu_viesti = self.salaus_purku.pura_salaus(yksityinen_avain, salattu_viesti)
+        except Exception:
+            purettu_viesti = "Virhe"
+        self.assertNotEqual(viesti, purettu_viesti)
 
     def test_suurin_yhteinen_tekija(self):
         for _ in range(10):

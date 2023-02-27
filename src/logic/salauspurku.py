@@ -24,11 +24,8 @@ class SalausJaPurku:
         lopuksi muunnetaan merkkijonoksi.
         Palauttaa alkuperäisen viestin merkkijonona.
         """
-        try:
-            purettu_viesti_int = pow(viesti.viesti, yksityinen_avain.eksponentti,
-                                     yksityinen_avain.modulus)
-            pituus = purettu_viesti_int.bit_length()//8+1
-            return pow(viesti.viesti, yksityinen_avain.eksponentti,
-                       yksityinen_avain.modulus).to_bytes(pituus, "big").decode()
-        except Exception:
-            return "Viestin purkaminen epäonnistui."
+        purettu_viesti_int = pow(viesti.viesti, yksityinen_avain.eksponentti,
+                                    yksityinen_avain.modulus)
+        pituus = purettu_viesti_int.bit_length()//8+1
+        return pow(viesti.viesti, yksityinen_avain.eksponentti,
+                    yksityinen_avain.modulus).to_bytes(pituus, "big").decode()

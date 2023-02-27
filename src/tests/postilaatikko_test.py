@@ -34,3 +34,11 @@ class TestKeychain(unittest.TestCase):
         aika2 = datetime.fromtimestamp(os.path.getmtime(self.testitiedosto2.name)).isoformat(sep=" ", timespec="seconds")
         self.assertEqual(f"testiviesti.msg, kirjoitettu {aika1}", str(self.viesti1))
         self.assertEqual(f"toinen.msg, kirjoitettu {aika2}", str(self.viesti2))
+
+    def test_viestien_nimet(self):
+        self.postilaatikko.lisaa_viesti(self.viesti1, self.testitiedosto1.name)
+        self.postilaatikko.lisaa_viesti(self.viesti2, self.testitiedosto2.name)
+        nimet = self.postilaatikko.viestien_nimet()
+        self.assertEqual(len(nimet), 2)
+        self.assertEqual(nimet[0], self.viesti1.tiedoston_nimi)
+        self.assertEqual(nimet[1], self.viesti2.tiedoston_nimi)

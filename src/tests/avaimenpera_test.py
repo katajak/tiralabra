@@ -43,3 +43,11 @@ class TestKeychain(unittest.TestCase):
         self.assertEqual(self.avaimenpera.avainten_maara(), 1)
         self.avaimenpera.lisaa_avain(self.julkinen_avain, self.testitiedosto.name)
         self.assertEqual(self.avaimenpera.avainten_maara(), 2)
+
+    def test_avainten_nimet(self):
+        self.avaimenpera.lisaa_avain(self.yksityinen_avain, self.testitiedosto.name)
+        self.avaimenpera.lisaa_avain(self.julkinen_avain, self.testitiedosto.name)
+        nimet = self.avaimenpera.avainten_nimet()
+        self.assertEqual(len(nimet), 2)
+        self.assertEqual(nimet[0], self.yksityinen_avain.nimi)
+        self.assertEqual(nimet[1], self.julkinen_avain.nimi)

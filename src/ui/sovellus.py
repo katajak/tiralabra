@@ -50,9 +50,12 @@ class UI:
                                                              "RSA 4096-bittiä"])
 
                 nimi = self.io.lue_lyhyt("Anna nimi avaimille")
-                if len(nimi) == 0:
+                if len(nimi) == 0 or nimi in self.avaimenpera.avainten_nimet():
                     self.tyhjenna = True
-                    self.viesti_kayttajalle.append("Toiminto peruutettu.")
+                    if len(nimi) == 0:
+                        self.viesti_kayttajalle.append("Toiminto peruutettu.")
+                    else:
+                        self.viesti_kayttajalle.append("Nimi on jo olemassa, valitse toinen nimi.")
                     continue
                 tiedoston_nimi_yksityinen = nimi + ".priv"
                 tiedoston_nimi_julkinen = nimi + ".pub"
@@ -76,9 +79,14 @@ class UI:
                                                        self.avaimenpera.julkiset_avaimet())
 
                     tiedosto = self.io.lue_lyhyt("Anna viestin tiedoston nimi")
-                    if len(tiedosto) == 0:
+                    if (len(tiedosto) == 0 or
+                        tiedosto + ".msg" in self.postilaatikko.viestien_nimet()):
                         self.tyhjenna = True
-                        self.viesti_kayttajalle.append("Toiminto peruutettu.")
+                        if len(tiedosto) == 0:
+                            self.viesti_kayttajalle.append("Toiminto peruutettu.")
+                        else:
+                            self.viesti_kayttajalle.append("""Tiedosto on jo olemassa,
+                                                              valitse toinen nimi.""")
                         continue
                     tiedosto = tiedosto + ".msg"
 
@@ -107,7 +115,13 @@ class UI:
                     self.tyhjenna_naytto()
                     salattu_viesti = self.io.lue_lista("Purettava viesti",
                                                        self.postilaatikko.viestit())
-                    purettu_viesti = self.salaus_purku.pura_salaus(yksityinen_avain, salattu_viesti)
+                    try:
+                        purettu_viesti = self.salaus_purku.pura_salaus(yksityinen_avain,
+                                                                       salattu_viesti)
+                    except Exception:
+                        self.tyhjenna = True
+                        self.viesti_kayttajalle.append("Viestin purkaminen epäonnistui.")
+                        continue
 
                     self.tyhjenna_naytto()
                     self.io.kirjoita(purettu_viesti)

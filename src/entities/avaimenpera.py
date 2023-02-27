@@ -15,6 +15,12 @@ class Avaimenpera:
         """
         return len(self.avaimenpera)
 
+    def avainten_nimet(self):
+        nimet = []
+        for avain in self.avaimenpera:
+            nimet.append(avain.nimi)
+        return nimet
+
     def julkiset_avaimet(self):
         """Metodi, joka palauttaa listan julkisista avaimista.
         """
