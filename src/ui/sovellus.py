@@ -71,7 +71,9 @@ class UI:
                 self.avaingeneraattori.generoi_avaimet(koko, nimi, tiedoston_nimi_yksityinen,
                                                        tiedoston_nimi_julkinen)
                 self.tyhjenna = True
-                self.viesti_kayttajalle.append("Avaimet generoitu onnistuneesti.")
+                self.viesti_kayttajalle.append("Avaimet generoitu onnistuneesti:")
+                self.viesti_kayttajalle.append(tiedoston_nimi_yksityinen)
+                self.viesti_kayttajalle.append(tiedoston_nimi_julkinen)
 
             elif syote == "Salaa viesti":
                 if self.avaimenpera.avainten_maara() > 0:
@@ -97,7 +99,8 @@ class UI:
 
                     self.salaus_purku.salaa_viesti(julkinen_avain, syote, tiedosto)
                     self.tyhjenna = True
-                    self.viesti_kayttajalle.append("Viesti salattu onnistuneesti.")
+                    self.viesti_kayttajalle.append("Viesti salattu onnistuneesti tiedostoon:")
+                    self.viesti_kayttajalle.append(tiedosto)
                 else:
                     self.viesti_kayttajalle.append("Julkisia avaimia ei löytynyt.")
 
