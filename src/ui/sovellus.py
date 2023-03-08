@@ -76,7 +76,7 @@ class UI:
                 self.viesti_kayttajalle.append(tiedoston_nimi_julkinen)
 
             elif syote == "Salaa viesti":
-                if self.avaimenpera.avainten_maara() > 0:
+                if len(self.avaimenpera.julkiset_avaimet()) > 0:
                     julkinen_avain = self.io.lue_lista("Käytettävä avain",
                                                        self.avaimenpera.julkiset_avaimet())
 
@@ -105,7 +105,7 @@ class UI:
                     self.viesti_kayttajalle.append("Julkisia avaimia ei löytynyt.")
 
             elif syote == "Pura salattu viesti":
-                if self.avaimenpera.avainten_maara() > 0:
+                if len(self.avaimenpera.yksityiset_avaimet()) > 0:
                     if self.postilaatikko.viestien_maara() == 0:
                         self.tyhjenna = True
                         self.viesti_kayttajalle.append("Viestejä ei löytynyt.")

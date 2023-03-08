@@ -65,4 +65,4 @@ class TiedostonKasittelija:
                                     .isoformat(sep=" ", timespec="seconds"))
                     viesti = Viesti(int(rivi), tiedosto, muokkausaika)
                     viestit.append(viesti)
-        return sorted(viestit, key=operator.attrgetter("tiedoston_nimi"))
+        return sorted(viestit, key=operator.attrgetter("muokkausaika"))
