@@ -7,7 +7,7 @@ from entities.viesti import Viesti
 
 
 class TiedostonKasittelija:
-    """Luokka, joka vastaa tiedostojen kirjoituksesta ja lukemisesta.
+    """Luokka, joka on vastuussa tiedostojen kirjoituksesta ja lukemisesta.
     """
     def kirjoita_avain_tiedostoon(self, avain, tiedoston_nimi):
         """Metodi kirjoittaa avaimen tiedostoon.

@@ -25,6 +25,8 @@ class Postilaatikko:
         return len(self.postilaatikko)
 
     def viestien_nimet(self):
+        """Metodi, joka palauttaa listassa viestien tiedostojen nimet.
+        """
         nimet = []
         for viesti in self.postilaatikko:
             nimet.append(viesti.tiedoston_nimi)

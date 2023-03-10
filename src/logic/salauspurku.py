@@ -3,13 +3,13 @@ from entities.viesti import Viesti
 
 
 class SalausJaPurku:
-    """Luokka, joka vastaa viestin salaamisesta ja salauksen purkamisesta.
+    """Luokka, joka on vastuussa viestin salaamisesta ja salauksen purkamisesta.
     """
     def __init__(self, postilaatikko):
         self.postilaatikko = postilaatikko
 
     def salaa_viesti(self, julkinen_avain, viesti, tiedoston_nimi):
-        """Metodi, joka vastaa viestin salaamisesta.
+        """Metodi, joka on vastuussa viestin salaamisesta.
         Viesti muunnetaan kokonaisluvuksi, ennen kuin se voidaan salata.
         Lisää postilaatikko-olioon viesti-olion ja kirjoittaa viesin tiedostoon.
         """
@@ -19,7 +19,7 @@ class SalausJaPurku:
         self.postilaatikko.lisaa_viesti(viesti_olio, tiedoston_nimi)
 
     def pura_salaus(self, yksityinen_avain, viesti):
-        """Metodi, joka vastaa viestin salauksen purkamisesta.
+        """Metodi, joka on vastuussa viestin salauksen purkamisesta.
         Salatulle viestille tehdään tarvittavat laskutoimitukset ja
         lopuksi muunnetaan merkkijonoksi.
         Palauttaa alkuperäisen viestin merkkijonona.

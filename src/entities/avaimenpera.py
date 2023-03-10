@@ -16,6 +16,8 @@ class Avaimenpera:
         return len(self.avaimenpera)
 
     def avainten_nimet(self):
+        """Metodi, joka palauttaa listan avainten nimistä.
+        """
         nimet = []
         for avain in self.avaimenpera:
             nimet.append(avain.nimi)

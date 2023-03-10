@@ -11,7 +11,7 @@ class AlkulukuGeneraattori:
         """Metodi, joka alustavasti tarkistaa, onko annettu luku alkuluku.
             Toimii jakamalla annettua lukua pienillä alkuluvuilla.
             Palauttaa True jos annettu luku ei ole jaettavissa millään pienellä
-            alkuluvulla välillä 2 < luku < sqrt(luku).
+            alkuluvulla välillä 2 < luku < sqrt(luku), kuitenkin max 100 asti.
             https://en.wikipedia.org/wiki/Primality_test#Simple_methods
         """
         alkuluvut = self.generoi_pienet_alkuluvut(100)
@@ -86,7 +86,7 @@ class AlkulukuGeneraattori:
 
     def tarkista_onko_alkuluku(self, luku):
         """Metodi, joka tarkistaa, onko annettu luku alkuluku.
-            Ensin katsotaan esitarkastuksella, sitten Miller-Rabinilla.
+            Ensin katsotaan esitarkistuksella, sitten Miller-Rabinilla.
             Palauttaa True jos annettu luku n on alkuluku.
         """
         if luku in (2, 3):

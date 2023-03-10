@@ -13,6 +13,9 @@ class IO:
         return input(syote)
 
     def lue_lyhyt(self, syote):
+        """Metodi, joka lukee käyttäjän syötteen inquirer moduulilla.
+        Metodille annetaan syötteenä kysymys, joka näytetään käyttäjälle.
+        """
         nimi = "syote"
         kysymys = inquirer.Text(nimi, message=syote),
 
@@ -20,6 +23,10 @@ class IO:
         return vastaus[nimi]
 
     def lue_lista(self, viesti, valinnat):
+        """Metodi, joka lukee käyttäjän syötteen inquirer moduulilla (lista).
+        Metodille annetaan syötteenä kysymys, joka näytetään käyttäjälle,
+        sekä listassa valinnat jotka ovat käyttäjän valittavissa.
+        """
         nimi = "syote"
         kysymys = [
             inquirer.List(
