@@ -10,6 +10,8 @@
 
 [Toteutusdokumentti](https://github.com/katajak/tiralabra/blob/main/dokumentaatio/toteutusdokumentti.md)
 
+[Käyttöohje](https://github.com/katajak/tiralabra/blob/main/dokumentaatio/kayttoohje.md)
+
 [Viikkoraportti 1](https://github.com/katajak/tiralabra/blob/main/dokumentaatio/viikkoraportit/viikkoraportti1.md)
 
 [Viikkoraportti 2](https://github.com/katajak/tiralabra/blob/main/dokumentaatio/viikkoraportit/viikkoraportti2.md)
