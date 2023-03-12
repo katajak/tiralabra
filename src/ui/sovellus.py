@@ -114,7 +114,6 @@ class UI:
                     yksityinen_avain = self.io.lue_lista("Käytettävä avain",
                                                          self.avaimenpera.yksityiset_avaimet())
 
-                    self.tyhjenna_naytto()
                     salattu_viesti = self.io.lue_lista("Purettava viesti",
                                                        self.postilaatikko.viestit())
                     try:

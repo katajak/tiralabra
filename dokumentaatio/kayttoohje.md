@@ -38,6 +38,8 @@ Kun avainpari on luotu, voit salata viestin valitsemalla päävalikosta "Salaa v
 
 Kun viesti on salattu, salauksen voi purkaa valitsemalla päävalikosta "Pura salattu viesti". Seuraavaksi pitää valita käytettävä yksityinen avain, sekä viesti, jonka haluat purkaa. Jos viestin purkaminen onnistui, viesti ilmestyy näytölle. Jos taas viestin purkaminen epäonnistui, siitä ilmoitetaan. Viestin purkaminen voi epäonnistua jos valitsit väärän avaimen, millä purkaa.
 
+![purku](./kuvat/purku.png)
+
 Päävalikossa on vaihtoehdot "Listaa avaimet" ja "Listaa viestit". Nämä nimensä mukaan vain listaavat näytölle kaikki avaimet ja viestit, jotka ohjelma tunnisti. Avaimet ja viestit tuodaan tiedostoista vain ohjelman käynnistyksen yhteydessä, joten jos manuaalisesti lisäät avaimen tai viestin projektin juurihakemistoon, ohjelma tulee käynnistää uudelleen.
 
 Ohjelman käytön voi lopettaa valitsemalla päävalikosta "Lopeta ohjelma"
