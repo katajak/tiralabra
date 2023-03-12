@@ -10,6 +10,7 @@ class AvainGeneraattori:
 
     def generoi_avaimet(self, bittimaara, nimi, tiedoston_nimi_ykstiyinen, tiedoston_nimi_julkinen):
         """Metodi, joka luo avainoliot, ja lisää avaimet avaimenperä-olioon
+        Saa argumentteina bittimäärän (int), avaimen haluttu nimi (str), sekä tiedostojen nimet (str)
         Ei varsinaisesti palauta mitään.
         """
         p, q = self.alkulukugeneraattori.generoi_alkuluvut(bittimaara)

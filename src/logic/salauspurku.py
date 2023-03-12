@@ -10,6 +10,11 @@ class SalausJaPurku:
 
     def salaa_viesti(self, julkinen_avain, viesti, tiedoston_nimi):
         """Metodi, joka on vastuussa viestin salaamisesta.
+        Argumentit:
+        julkinen avain = avain-olio
+        viesti = salaamaton viesti str-muodossa
+        tiedoston_nimi = haluttu tiedoston nimi
+
         Viesti muunnetaan kokonaisluvuksi, ennen kuin se voidaan salata.
         Lisää postilaatikko-olioon viesti-olion ja kirjoittaa viesin tiedostoon.
         """
